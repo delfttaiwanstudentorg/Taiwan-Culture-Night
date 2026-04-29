@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Noto+Serif+TC:wght@300;400;500;700;900&family=Space+Grotesk:wght@300;400;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Yu Mincho", "YuMincho", "Noto Serif TC", serif;
+  --font-display: "Space Grotesk", sans-serif;
+  
+  --color-brand-cream: #F9F9F7;
+  --color-brand-ink: #101010;
+  --color-brand-accent: #C1562D; 
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply text-brand-ink font-sans antialiased selection:bg-brand-accent selection:text-white;
+  }
+}
+
+.editorial-divider {
+  @apply border-brand-ink/10;
+}
+
+.label-xs {
+  @apply text-[10px] uppercase tracking-[0.2em] font-bold;
+}
+
+.editorial-thick-border {
+  @apply border-8 border-white;
+}
+
+.editorial-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1rem;
+}
+
+.vertical-text {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+
+.mask-oval {
+  clip-path: ellipse(50% 50% at 50% 50%);
+}
