@@ -275,7 +275,7 @@ const Hero = ({ lang }: { lang: 'en' | 'zh' }) => {
       <div className="absolute top-0 left-0 w-full h-40 bg-gradient-to-b from-black/60 to-transparent z-40 pointer-events-none" />
 
       {/* Left Column: Title & Intro */}
-      <div className="col-span-12 lg:col-span-5 p-12 border-r border-white/10 flex flex-col justify-center pt-32 bg-brand-ink/40 backdrop-blur-md text-brand-cream">
+      <div className="col-span-12 lg:col-span-5 p-12 border-r border-white/10 flex flex-col justify-center pt-32 bg-brand-ink/90 backdrop-blur-md text-brand-cream">
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
@@ -319,9 +319,9 @@ const Hero = ({ lang }: { lang: 'en' | 'zh' }) => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.5 }}
           >
-            <h2 className="text-brand-cream/10 font-serif text-[15vw] font-black leading-none select-none">TAIWAN</h2>
+            <h2 className="text-brand-cream/30 font-serif text-[15vw] font-black leading-none select-none">TAIWAN</h2>
             <div className="mt-[-5vw]">
-               <span className="text-brand-cream font-sans text-xs uppercase tracking-[1em] opacity-30">Culture Night</span>
+               <span className="text-brand-cream font-sans text-xs uppercase tracking-[1em] opacity-60">Culture Night</span>
             </div>
           </motion.div>
         </div>
@@ -356,11 +356,8 @@ export default function App() {
       <div className="fixed inset-0 z-[-10] pointer-events-none bg-brand-cream" />
       <div className="fixed inset-0 z-[-5] pointer-events-none overflow-hidden opacity-85">
         <div className="absolute inset-0 bg-brand-accent/5 z-0" />
-        <motion.div style={{ y: bgY1 }} className="absolute top-0 left-0 w-full h-[150vh]">
-          <img src={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/bg-lanterns.png`} alt="BG 1" className="w-full h-full object-cover" />
-        </motion.div>
-        <motion.div style={{ y: bgY2 }} className="absolute bottom-[-50vh] left-0 w-full h-[150vh]">
-          <img src={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/bg-lanterns.png`} alt="BG 2" className="w-full h-full object-cover" />
+        <motion.div style={{ y: bgY1 }} className="absolute inset-0 w-full h-[150vh]">
+          <img src={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/bg-lanterns.png`} alt="BG" className="w-full h-full object-cover" />
         </motion.div>
       </div>
 
@@ -378,7 +375,7 @@ export default function App() {
       <Hero lang={lang} />
 
       {/* About Section */}
-      <section id="about" className="grid grid-cols-12 border-b editorial-divider backdrop-blur-sm bg-brand-cream/60">
+      <section id="about" className="grid grid-cols-12 border-b editorial-divider backdrop-blur-sm bg-brand-cream/95">
         <div className="col-span-12 lg:col-span-5 p-12 border-r editorial-divider flex flex-col justify-center">
             <h3 className="font-serif text-5xl leading-[1.3] mb-12 not-italic">
               {lang === 'en' ? <>Showcasing Taiwan<br />to the World from Delft</> : <>讓世界在<br />台夫特看見台灣</>}
@@ -463,6 +460,7 @@ export default function App() {
                   className="group w-full text-left border-b editorial-divider pb-6 outline-none"
                 >
                   <div className="flex justify-between items-center">
+                    <h5 className="font-serif text-2xl group-hover:text-brand-accent transition-colors font-bold uppercase">{v[lang].name}</h5>
                     <div className="flex items-center gap-8">
                       <img 
                         src={`${import.meta.env.BASE_URL}logos/vendors/${v[lang].id}.png`} 
@@ -470,9 +468,8 @@ export default function App() {
                         className="w-16 h-16 object-contain transition-all"
                         onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
                       />
-                      <h5 className="font-serif text-2xl group-hover:text-brand-accent transition-colors font-bold uppercase">{v[lang].name}</h5>
+                      <span className="text-[10px] uppercase font-bold tracking-widest text-brand-ink/60 group-hover:text-brand-accent transition-colors underline decoration-brand-accent decoration-2 underline-offset-4">{lang === 'en' ? 'Detail +' : '詳情 +'}</span>
                     </div>
-                    <span className="text-[10px] uppercase font-bold tracking-widest opacity-30 group-hover:opacity-100 transition-opacity underline decoration-brand-accent decoration-2 underline-offset-4">{lang === 'en' ? 'Detail +' : '詳情 +'}</span>
                   </div>
                 </button>
               ))}
@@ -481,7 +478,7 @@ export default function App() {
         </div>
 
         {/* Culture column - Now below market */}
-        <div className="p-12 md:p-24 flex flex-col bg-brand-cream/40 border-t editorial-divider">
+        <div className="p-12 md:p-24 flex flex-col bg-brand-cream/90 border-t editorial-divider">
           <div className="container mx-auto">
             <div className="flex justify-between items-end mb-16">
               <h2 className="text-5xl font-serif">{lang === 'en' ? 'Cultural Experience' : '文化體驗'}</h2>
@@ -505,7 +502,7 @@ export default function App() {
       </section>
 
       {/* Sponsors Section */}
-      <section id="sponsors" className="py-32 bg-white/40 backdrop-blur-sm border-b editorial-divider">
+      <section id="sponsors" className="py-32 bg-white/90 backdrop-blur-sm border-b editorial-divider">
         <div className="container mx-auto px-6">
           <SectionHeading zh="贊助夥伴" en="Sponsors" number="03" />
           
@@ -536,7 +533,7 @@ export default function App() {
       </section>
 
       {/* Location Section */}
-      <section id="location" className="py-32 bg-white/40 backdrop-blur-sm">
+      <section id="location" className="py-32 bg-white/90 backdrop-blur-sm">
         <div className="container mx-auto px-6">
           <SectionHeading zh="活動地點" en="Venue & Location" number="04" />
           
