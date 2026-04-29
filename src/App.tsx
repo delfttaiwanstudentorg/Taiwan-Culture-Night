@@ -365,10 +365,10 @@ export default function App() {
       <div className="fixed inset-0 z-[-5] pointer-events-none overflow-hidden opacity-40">
         <div className="absolute inset-0 bg-brand-accent/5 z-0" />
         <motion.div style={{ y: bgY1 }} className="absolute top-0 left-0 w-full h-[150vh]">
-          <img src={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/bg_street.png`} alt="BG 1" className="w-full h-full object-cover opacity-20" />
+          <img src={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/bg-street.png`} alt="BG 1" className="w-full h-full object-cover grayscale contrast-125 mix-blend-multiply" />
         </motion.div>
         <motion.div style={{ y: bgY2 }} className="absolute bottom-[-50vh] left-0 w-full h-[150vh]">
-          <img src={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/bg_lanterns.png`} alt="BG 2" className="w-full h-full object-cover opacity-20" />
+          <img src={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/bg-lanterns.png`} alt="BG 2" className="w-full h-full object-cover grayscale contrast-125 mix-blend-multiply" />
         </motion.div>
       </div>
 
