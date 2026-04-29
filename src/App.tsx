@@ -204,42 +204,43 @@ const Navbar = ({ lang, setLang }: { lang: 'en' | 'zh', setLang: (l: 'en' | 'zh'
   ];
 
   return (
-    <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 border-b editorial-divider ${scrolled ? 'bg-brand-cream/90 backdrop-blur-md py-4' : 'bg-transparent py-8'}`}>
+    <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 border-b border-white/10 ${scrolled ? 'bg-brand-ink/90 backdrop-blur-md py-4' : 'bg-transparent py-8'}`}>
       <div className="px-12 flex justify-between items-center">
-        <div className="flex items-center gap-4">
-          <img src={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/dtso.png`} alt="DTSO" className="h-10 w-10 object-contain" />
-          <a href="#" className="label-xs not-italic tracking-widest">
-            TAIWAN CULTURE NIGHT <span className="opacity-40 ml-2">DELFT</span>
+        {/* Logo & Title Group */}
+        <div className="flex items-center gap-6">
+          <img src={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/dtso.png`} alt="DTSO" className="h-20 w-20 object-contain brightness-0 invert" />
+          <a href="#" className="font-serif text-3xl tracking-widest text-white drop-shadow-lg not-italic font-medium">
+            TAIWAN CULTURE NIGHT <span className="opacity-60 ml-2 font-sans text-xs align-middle">DELFT</span>
           </a>
         </div>
         
         {/* Top Right: Actions Group */}
-        <div className="flex items-center gap-6">
+        <div className="flex items-center gap-8">
           {/* Desktop Links */}
           <div className="hidden md:flex items-center gap-10">
             {navLinks.map((link) => (
               <a 
                 key={link.name} 
                 href={link.href} 
-                className="text-[10px] uppercase tracking-widest font-bold hover:text-brand-accent transition-colors"
+                className="text-[10px] uppercase tracking-[0.2em] font-bold text-white hover:text-brand-accent transition-colors" style={{textShadow: '0 1px 4px rgba(0,0,0,0.8)'}}
               >
                 {link.name}
               </a>
             ))}
-            <a href="#location" className="text-[10px] uppercase tracking-widest font-bold bg-brand-accent text-brand-cream px-4 py-1.5 hover:bg-brand-ink transition-colors">
+            <a href="#location" className="text-[10px] uppercase tracking-widest font-bold bg-brand-accent text-brand-cream px-6 py-2 hover:bg-white hover:text-brand-ink transition-all">
               {lang === 'en' ? 'Location' : '活動地點'}
             </a>
           </div>
 
-          {/* Language Toggle (Show opposite) */}
+          {/* Language Toggle */}
           <button 
             onClick={() => setLang(lang === 'en' ? 'zh' : 'en')}
-            className="text-[10px] bg-brand-ink text-brand-cream px-3 py-1.5 uppercase tracking-widest font-bold border border-brand-ink hover:bg-brand-cream hover:text-brand-ink transition-all"
+            className="w-10 h-10 border border-white/30 flex items-center justify-center text-[10px] text-white hover:border-brand-accent hover:text-brand-accent transition-all uppercase tracking-tighter"
           >
             {lang === 'en' ? 'ZH' : 'EN'}
           </button>
 
-          <button className="text-brand-ink md:hidden" onClick={() => setIsOpen(!isOpen)}>
+          <button className="text-white md:hidden" onClick={() => setIsOpen(!isOpen)}>
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
@@ -273,19 +274,22 @@ const Navbar = ({ lang, setLang }: { lang: 'en' | 'zh', setLang: (l: 'en' | 'zh'
 
 const Hero = ({ lang }: { lang: 'en' | 'zh' }) => {
   return (
-    <section className="relative min-h-[85vh] grid grid-cols-12 border-b editorial-divider">
+    <section className="relative min-h-screen grid grid-cols-12 border-b border-white/10">
+      {/* Top Gradient Overlay for Navbar visibility */}
+      <div className="absolute top-0 left-0 w-full h-40 bg-gradient-to-b from-black/60 to-transparent z-40 pointer-events-none" />
+
       {/* Left Column: Title & Intro */}
-      <div className="col-span-12 lg:col-span-5 p-12 border-r editorial-divider flex flex-col justify-between pt-32">
+      <div className="col-span-12 lg:col-span-5 p-12 border-r border-white/10 flex flex-col justify-center pt-32 bg-brand-ink/85 text-brand-cream">
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1 }}
         >
-          <span className="label-xs text-gray-400 mb-6 block uppercase">Delft / 2026</span>
+          <span className="label-xs text-brand-accent mb-6 block uppercase tracking-[0.3em] font-bold">Delft / 2026</span>
           <h1 className="text-[120px] leading-[0.9] font-serif font-black mb-10 -ml-1 not-italic">
             台灣<br />之夜
           </h1>
-          <p className="text-lg leading-[1.8] text-brand-ink/80 font-light max-w-sm mb-12">
+          <p className="text-xl leading-[1.8] text-brand-cream/80 font-light max-w-sm mb-12">
             {lang === 'en' 
               ? 'A curated evening celebrating the vibrant heritage and modern innovation of Taiwan. Experience authentic flavors, soundscapes, and design in the heart of Delft.'
               : '一場集結台灣豐富文化與現代創意的盛會。在台夫特市中心，與我們一同體驗最在地的人情味、美食與設計。'
@@ -303,22 +307,14 @@ const Hero = ({ lang }: { lang: 'en' | 'zh' }) => {
              </div>
           </div>
         </motion.div>
-
-        <div className="mt-20">
-          <h3 className="label-xs mb-6 opacity-30 uppercase tracking-widest">{lang === 'en' ? 'Support' : '支持單位'}</h3>
-          <div className="grid grid-cols-2 gap-4">
-            <div className="border editorial-divider p-4 text-[10px] uppercase font-bold tracking-tight grayscale opacity-70 flex items-center justify-center text-center">Cultural Division</div>
-            <div className="border editorial-divider p-4 text-[10px] uppercase font-bold tracking-tight grayscale opacity-70 flex items-center justify-center text-center">Education Division</div>
-          </div>
-        </div>
       </div>
 
       {/* Right Column: Hero Visual Overlay */}
-      <div className="col-span-12 lg:col-span-7 relative overflow-hidden bg-brand-ink/60 pt-32 lg:pt-0 backdrop-blur-[2px]">
-        <div className="absolute inset-0 bg-gradient-to-br from-brand-accent/20 via-brand-ink/90 to-black z-10" />
-        {/* Placeholder for Main Visual Background */}
-        <div className="absolute inset-0 opacity-60 mix-blend-overlay">
-           <div className="w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-brand-accent/40 via-transparent to-transparent" />
+      <div className="col-span-12 lg:col-span-7 relative overflow-hidden pt-32 lg:pt-0">
+        <div className="absolute inset-0 bg-gradient-to-br from-brand-ink/40 via-brand-ink/20 to-brand-ink/50 z-10" />
+        {/* Colorful accent overlay */}
+        <div className="absolute inset-0 opacity-30 mix-blend-overlay">
+           <div className="w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-brand-accent/60 via-transparent to-transparent" />
         </div>
         
         <div className="relative z-20 h-full flex flex-col justify-center items-center p-24 text-center">
@@ -340,12 +336,12 @@ const Hero = ({ lang }: { lang: 'en' | 'zh' }) => {
 
 const SectionHeading = ({ zh, en, number }: { zh: string, en: string, number: string }) => (
   <div className="flex flex-col mb-16 relative">
-    <div className="flex items-baseline space-x-4">
-      <span className="font-display text-6xl font-light text-brand-accent opacity-20">{number}</span>
+    <div className="flex items-baseline space-x-6">
+      <span className="font-serif text-7xl font-normal text-brand-accent leading-none">{number}</span>
       <h2 className="font-serif text-4xl md:text-5xl font-bold">{en}</h2>
     </div>
-    <span className="font-sans text-[11px] uppercase tracking-[0.4em] text-brand-accent ml-20">{zh}</span>
-    <div className="h-1 w-12 bg-brand-accent mt-4 ml-20" />
+    <span className="font-sans text-[11px] uppercase tracking-[0.4em] text-brand-accent ml-24">{zh}</span>
+    <div className="h-1 w-12 bg-brand-accent mt-4 ml-24" />
   </div>
 );
 
@@ -362,13 +358,13 @@ export default function App() {
     <div className="relative text-brand-ink min-h-screen flex flex-col editorial-thick-border box-border overflow-x-hidden">
       {/* Background */}
       <div className="fixed inset-0 z-[-10] pointer-events-none bg-brand-cream" />
-      <div className="fixed inset-0 z-[-5] pointer-events-none overflow-hidden opacity-40">
+      <div className="fixed inset-0 z-[-5] pointer-events-none overflow-hidden opacity-85">
         <div className="absolute inset-0 bg-brand-accent/5 z-0" />
         <motion.div style={{ y: bgY1 }} className="absolute top-0 left-0 w-full h-[150vh]">
-          <img src={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/bg-street.png`} alt="BG 1" className="w-full h-full object-cover grayscale contrast-125 mix-blend-multiply" />
+          <img src={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/bg-street.png`} alt="BG 1" className="w-full h-full object-cover" />
         </motion.div>
         <motion.div style={{ y: bgY2 }} className="absolute bottom-[-50vh] left-0 w-full h-[150vh]">
-          <img src={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/bg-lanterns.png`} alt="BG 2" className="w-full h-full object-cover grayscale contrast-125 mix-blend-multiply" />
+          <img src={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/bg-lanterns.png`} alt="BG 2" className="w-full h-full object-cover" />
         </motion.div>
       </div>
 
@@ -587,18 +583,18 @@ export default function App() {
       {/* Footer */}
       <footer className="flex flex-col md:flex-row items-center justify-between px-12 bg-brand-ink/95 text-brand-cream py-10 md:h-24 md:py-0 backdrop-blur-md">
         <div className="flex items-center gap-6">
-          <img src={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/dtso.png`} alt="DTSO" className="h-12 w-12 object-contain brightness-0 invert opacity-60" />
+          <img src={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/dtso.png`} alt="DTSO" className="h-12 w-12 object-contain brightness-0 invert" />
           <div className="label-xs opacity-60">Venue: DUWO Common Room, Delft</div>
         </div>
         <div className="label-xs flex gap-8 mt-4 md:mt-0">
-          <a href="https://www.instagram.com/dtso_delft/" target="_blank" rel="noopener noreferrer" className="hover:opacity-50 transition-opacity uppercase font-bold tracking-widest flex items-center gap-2">
-            <Instagram size={12} /> Instagram
+          <a href="https://www.instagram.com/dtso_delft/" target="_blank" rel="noopener noreferrer" className="hover:text-brand-accent transition-colors uppercase font-bold tracking-widest flex items-center gap-2">
+            <Instagram size={14} /> Instagram
           </a>
-          <a href="mailto:dtso.delft@gmail.com" className="hover:opacity-50 transition-opacity uppercase font-bold tracking-widest flex items-center gap-2">
-            <Mail size={12} /> Email
+          <a href="mailto:dtso.delft@gmail.com" className="hover:text-brand-accent transition-colors uppercase font-bold tracking-widest flex items-center gap-2">
+            <Mail size={14} /> Email
           </a>
         </div>
-        <div className="label-xs opacity-40 mt-4 md:mt-0">© 2026 DTSO Delft Taiwan Student Association</div>
+        <div className="label-xs opacity-40 mt-4 md:mt-0">© 2026 DTSO Delft Taiwan Student Organization</div>
       </footer>
       </div>
     </div>
