@@ -174,7 +174,7 @@ const VendorModal = ({ vendor, onClose, lang }: { vendor: Vendor, onClose: () =>
       {/* Right: Photo Space */}
       <div className="w-full md:w-2/5 bg-brand-ink/5 flex items-center justify-center border-l editorial-divider min-h-[300px]">
         <img 
-          src={`./photos/vendors/${vendor.id}.png`} 
+          src={`${import.meta.env.BASE_URL}photos/vendors/${vendor.id}.png`} 
           alt={vendor.name} 
           className="w-full h-full object-cover"
           onError={(e) => {
@@ -207,7 +207,7 @@ const Navbar = ({ lang, setLang }: { lang: 'en' | 'zh', setLang: (l: 'en' | 'zh'
     <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 border-b editorial-divider ${scrolled ? 'bg-brand-cream/90 backdrop-blur-md py-4' : 'bg-transparent py-8'}`}>
       <div className="px-12 flex justify-between items-center">
         <div className="flex items-center gap-4">
-          <img src="./DTSO.png" alt="DTSO" className="h-10 w-10 object-contain" />
+          <img src={`${import.meta.env.BASE_URL}DTSO.png`} alt="DTSO" className="h-10 w-10 object-contain" />
           <a href="#" className="label-xs not-italic tracking-widest">
             TAIWAN CULTURE NIGHT <span className="opacity-40 ml-2">DELFT</span>
           </a>
@@ -365,10 +365,10 @@ export default function App() {
       <div className="fixed inset-0 z-[-5] pointer-events-none overflow-hidden opacity-40">
         <div className="absolute inset-0 bg-brand-accent/5 z-0" />
         <motion.div style={{ y: bgY1 }} className="absolute top-0 left-0 w-full h-[150vh]">
-          <img src="./bg_street.jpg" alt="BG 1" className="w-full h-full object-cover grayscale contrast-125 mix-blend-multiply" />
+          <img src={`${import.meta.env.BASE_URL}bg_street.jpg`} alt="BG 1" className="w-full h-full object-cover grayscale contrast-125 mix-blend-multiply" />
         </motion.div>
         <motion.div style={{ y: bgY2 }} className="absolute bottom-[-50vh] left-0 w-full h-[150vh]">
-          <img src="./bg_lanterns.jpg" alt="BG 2" className="w-full h-full object-cover grayscale contrast-125 mix-blend-multiply" />
+          <img src={`${import.meta.env.BASE_URL}bg_lanterns.jpg`} alt="BG 2" className="w-full h-full object-cover grayscale contrast-125 mix-blend-multiply" />
         </motion.div>
       </div>
 
@@ -467,19 +467,16 @@ export default function App() {
               <button 
                 key={i} 
                 onClick={() => setSelectedVendor(v[lang])}
-                className="group w-full text-left border-b editorial-divider pb-4 last:border-0 outline-none flex items-center gap-6"
-              >
-                {/* Vendor Logo Placeholder */}
-                <div className="w-12 h-12 bg-brand-ink/5 border editorial-divider flex items-center justify-center shrink-0 group-hover:border-brand-accent transition-colors">
-                  <img 
-                    src={`./logos/vendors/${v[lang].id}.png`} 
-                    alt="" 
-                    className="w-full h-full object-contain p-2 grayscale group-hover:grayscale-0 transition-all"
-                    onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
-                  />
-                </div>
                 <div className="flex-1 flex justify-between items-baseline">
-                  <h5 className="font-serif text-xl group-hover:text-brand-accent transition-colors font-bold uppercase">{v[lang].name}</h5>
+                  <div className="flex items-center gap-4">
+                    <img 
+                      src={`${import.meta.env.BASE_URL}logos/vendors/${v[lang].id}.png`} 
+                      alt="" 
+                      className="w-10 h-10 object-contain grayscale group-hover:grayscale-0 transition-all"
+                      onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
+                    />
+                    <h5 className="font-serif text-xl group-hover:text-brand-accent transition-colors font-bold uppercase">{v[lang].name}</h5>
+                  </div>
                   <span className="text-[10px] uppercase font-bold tracking-widest opacity-30 group-hover:opacity-100 transition-opacity underline decoration-brand-accent decoration-2 underline-offset-4">{lang === 'en' ? 'Detail +' : '詳情 +'}</span>
                 </div>
               </button>
@@ -514,35 +511,28 @@ export default function App() {
         <div className="container mx-auto px-6">
           <SectionHeading zh="贊助夥伴" en="Sponsors" number="03" />
           
-          <div className="p-12 border editorial-divider overflow-hidden bg-brand-cream/50 backdrop-blur-md mb-20">
-            <div className="flex flex-wrap justify-center gap-16 items-center">
-               {[
-                 { id: 'office', name: 'Representative Office' },
-                 { id: 'moe', name: 'Ministry of Education' },
-                 { id: 'tba', name: 'TBA-NL' },
-                 { id: 'school', name: 'Taipei School' },
-                 { id: 'typin', name: 'TYPIN' }
-               ].map(logo => (
-                 <div key={logo.id} className="w-32 h-20 flex items-center justify-center grayscale hover:grayscale-0 transition-all opacity-60 hover:opacity-100">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-12 items-start">
+             {[
+               { id: 'office', zh: '駐荷蘭台北代表處', en: 'Taipei Representative Office in the Netherlands' },
+               { id: 'moe', zh: '台灣教育部', en: 'Education Division, Ministry of Education' },
+               { id: 'tba', zh: '荷蘭台灣商會', en: 'Taiwan Business Association in the Netherlands' },
+               { id: 'school', zh: '荷蘭台北學校', en: 'Taipei School in the Netherlands' },
+               { id: 'typin', zh: '荷蘭台灣專業青年會', en: 'Taiwanese Junior Chamber Professionals Netherlands' }
+             ].map(sponsor => (
+               <div key={sponsor.id} className="flex flex-col items-center text-center group">
+                 <div className="h-24 w-full flex items-center justify-center mb-6 grayscale group-hover:grayscale-0 transition-all duration-500 opacity-70 group-hover:opacity-100">
                     <img 
-                      src={`./logos/sponsors/${logo.id}.png`} 
-                      alt={logo.name}
+                      src={`${import.meta.env.BASE_URL}logos/sponsors/${sponsor.id}.png`} 
+                      alt={sponsor.zh}
                       className="max-w-full max-h-full object-contain"
                       onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
                     />
                  </div>
-               ))}
-            </div>
-          </div>
-          
-          <div>
-            <div className="flex flex-wrap items-center gap-x-12 gap-y-8 font-serif text-xl opacity-80">
-              <span>{lang === 'en' ? 'Taipei Representative Office in the Netherlands' : '駐荷蘭台北代表處'}</span>
-              <span>{lang === 'en' ? 'Education Division, Ministry of Education' : '台灣教育部'}</span>
-              <span>{lang === 'en' ? 'Taiwan Business Association in the Netherlands' : '荷蘭台灣商會'}</span>
-              <span>{lang === 'en' ? 'Taipei School in the Netherlands' : '荷蘭台北學校'}</span>
-              <span>{lang === 'en' ? 'Taiwanese Junior Chamber Professionals Netherlands' : '荷蘭台灣專業青年會'}</span>
-            </div>
+                 <span className="font-serif text-lg leading-snug opacity-80 group-hover:opacity-100 transition-opacity">
+                   {lang === 'zh' ? sponsor.zh : sponsor.en}
+                 </span>
+               </div>
+             ))}
           </div>
         </div>
       </section>
@@ -595,7 +585,7 @@ export default function App() {
       {/* Footer */}
       <footer className="flex flex-col md:flex-row items-center justify-between px-12 bg-brand-ink/95 text-brand-cream py-10 md:h-24 md:py-0 backdrop-blur-md">
         <div className="flex items-center gap-6">
-          <img src="./DTSO.png" alt="DTSO" className="h-12 w-12 object-contain grayscale brightness-200" />
+          <img src={`${import.meta.env.BASE_URL}DTSO.png`} alt="DTSO" className="h-12 w-12 object-contain grayscale brightness-200" />
           <div className="label-xs opacity-60">Venue: DUWO Common Room, Delft</div>
         </div>
         <div className="label-xs flex gap-8 mt-4 md:mt-0">
