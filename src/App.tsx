@@ -375,7 +375,7 @@ export default function App() {
       <Hero lang={lang} />
 
       {/* About Section */}
-      <section id="about" className="grid grid-cols-12 border-b editorial-divider backdrop-blur-sm bg-brand-cream/95">
+      <section id="about" className="grid grid-cols-12 backdrop-blur-sm bg-brand-cream/95">
         <div className="col-span-12 lg:col-span-5 p-12 border-r editorial-divider flex flex-col justify-center">
             <h3 className="font-serif text-5xl leading-[1.3] mb-12 not-italic">
               {lang === 'en' ? <>Showcasing Taiwan<br />to the World from Delft</> : <>讓世界在<br />台夫特看見台灣</>}
@@ -449,7 +449,7 @@ export default function App() {
 
 
       {/* Experience Section */}
-      <section id="vendors" className="border-b editorial-divider backdrop-blur-sm text-brand-ink">
+      <section id="vendors" className="backdrop-blur-sm text-brand-ink">
         {/* Market column - Now full width */}
         <div className="p-12 md:p-24 bg-white/90">
           <div className="container mx-auto">
@@ -510,7 +510,7 @@ export default function App() {
       </section>
 
       {/* Sponsors Section */}
-      <section id="sponsors" className="py-32 bg-white/95 backdrop-blur-sm border-b editorial-divider">
+      <section id="sponsors" className="py-32 bg-white/95 backdrop-blur-sm">
         <div className="container mx-auto px-6">
           <SectionHeading zh="贊助夥伴" en="Sponsors" number="03" />
           
