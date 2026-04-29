@@ -207,7 +207,7 @@ const Navbar = ({ lang, setLang }: { lang: 'en' | 'zh', setLang: (l: 'en' | 'zh'
     <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 border-b editorial-divider ${scrolled ? 'bg-brand-cream/90 backdrop-blur-md py-4' : 'bg-transparent py-8'}`}>
       <div className="px-12 flex justify-between items-center">
         <div className="flex items-center gap-4">
-          <img src={`${import.meta.env.BASE_URL}DTSO.png`} alt="DTSO" className="h-10 w-10 object-contain" />
+          <img src={`${import.meta.env.BASE_URL}dtso.png`} alt="DTSO" className="h-10 w-10 object-contain" />
           <a href="#" className="label-xs not-italic tracking-widest">
             TAIWAN CULTURE NIGHT <span className="opacity-40 ml-2">DELFT</span>
           </a>
@@ -365,10 +365,10 @@ export default function App() {
       <div className="fixed inset-0 z-[-5] pointer-events-none overflow-hidden opacity-40">
         <div className="absolute inset-0 bg-brand-accent/5 z-0" />
         <motion.div style={{ y: bgY1 }} className="absolute top-0 left-0 w-full h-[150vh]">
-          <img src={`${import.meta.env.BASE_URL}bg_street.jpg`} alt="BG 1" className="w-full h-full object-cover grayscale contrast-125 mix-blend-multiply" />
+          <img src={`${import.meta.env.BASE_URL}bg_street.png`} alt="BG 1" className="w-full h-full object-cover grayscale contrast-125 mix-blend-multiply" />
         </motion.div>
         <motion.div style={{ y: bgY2 }} className="absolute bottom-[-50vh] left-0 w-full h-[150vh]">
-          <img src={`${import.meta.env.BASE_URL}bg_lanterns.jpg`} alt="BG 2" className="w-full h-full object-cover grayscale contrast-125 mix-blend-multiply" />
+          <img src={`${import.meta.env.BASE_URL}bg_lanterns.png`} alt="BG 2" className="w-full h-full object-cover grayscale contrast-125 mix-blend-multiply" />
         </motion.div>
       </div>
 
@@ -470,16 +470,16 @@ export default function App() {
                 className="group w-full text-left border-b editorial-divider pb-4 last:border-0 outline-none"
               >
                 <div className="flex-1 flex justify-between items-baseline">
+                  <h5 className="font-serif text-xl group-hover:text-brand-accent transition-colors font-bold uppercase">{v[lang].name}</h5>
                   <div className="flex items-center gap-4">
                     <img 
                       src={`${import.meta.env.BASE_URL}logos/vendors/${v[lang].id}.png`} 
                       alt="" 
-                      className="w-10 h-10 object-contain grayscale group-hover:grayscale-0 transition-all"
+                      className="w-10 h-10 object-contain transition-all"
                       onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
                     />
-                    <h5 className="font-serif text-xl group-hover:text-brand-accent transition-colors font-bold uppercase">{v[lang].name}</h5>
+                    <span className="text-[10px] uppercase font-bold tracking-widest opacity-30 group-hover:opacity-100 transition-opacity underline decoration-brand-accent decoration-2 underline-offset-4">{lang === 'en' ? 'Detail +' : '詳情 +'}</span>
                   </div>
-                  <span className="text-[10px] uppercase font-bold tracking-widest opacity-30 group-hover:opacity-100 transition-opacity underline decoration-brand-accent decoration-2 underline-offset-4">{lang === 'en' ? 'Detail +' : '詳情 +'}</span>
                 </div>
               </button>
             ))}
@@ -522,7 +522,7 @@ export default function App() {
                { id: 'typin', zh: '荷蘭台灣專業青年會', en: 'Taiwanese Junior Chamber Professionals Netherlands' }
              ].map(sponsor => (
                <div key={sponsor.id} className="flex flex-col items-center text-center group">
-                 <div className="h-24 w-full flex items-center justify-center mb-6 grayscale group-hover:grayscale-0 transition-all duration-500 opacity-70 group-hover:opacity-100">
+                 <div className="h-24 w-full flex items-center justify-center mb-6 transition-all duration-500">
                     <img 
                       src={`${import.meta.env.BASE_URL}logos/sponsors/${sponsor.id}.png`} 
                       alt={sponsor.zh}
@@ -587,7 +587,7 @@ export default function App() {
       {/* Footer */}
       <footer className="flex flex-col md:flex-row items-center justify-between px-12 bg-brand-ink/95 text-brand-cream py-10 md:h-24 md:py-0 backdrop-blur-md">
         <div className="flex items-center gap-6">
-          <img src={`${import.meta.env.BASE_URL}DTSO.png`} alt="DTSO" className="h-12 w-12 object-contain grayscale brightness-200" />
+          <img src={`${import.meta.env.BASE_URL}dtso.png`} alt="DTSO" className="h-12 w-12 object-contain grayscale brightness-200" />
           <div className="label-xs opacity-60">Venue: DUWO Common Room, Delft</div>
         </div>
         <div className="label-xs flex gap-8 mt-4 md:mt-0">
