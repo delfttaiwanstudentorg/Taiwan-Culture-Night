@@ -274,7 +274,7 @@ const Hero = ({ lang }: { lang: 'en' | 'zh' }) => {
       <div className="absolute top-0 left-0 w-full h-40 bg-gradient-to-b from-black/60 to-transparent z-40 pointer-events-none" />
 
       {/* Left Column: Title & Intro */}
-      <div className="col-span-12 lg:col-span-5 p-12 border-r border-white/10 flex flex-col justify-center pt-32 bg-brand-ink/90 backdrop-blur-md text-brand-cream">
+      <div className="col-span-12 lg:col-span-5 p-12 border-r border-white/10 flex flex-col justify-center pt-32 bg-brand-ink/80 backdrop-blur-md text-brand-cream">
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
@@ -374,7 +374,7 @@ export default function App() {
       <Hero lang={lang} />
 
       {/* About Section */}
-      <section id="about" className="grid grid-cols-12 backdrop-blur-sm bg-brand-cream/98 relative z-10 -mt-px">
+      <section id="about" className="grid grid-cols-12 backdrop-blur-sm bg-brand-cream/85 relative z-10 -mt-px">
         <div className="col-span-12 lg:col-span-5 p-12 border-r editorial-divider flex flex-col justify-center">
             <h3 className="font-serif text-5xl leading-[1.3] mb-12 not-italic">
               {lang === 'en' ? <>Showcasing Taiwan<br />to the World from Delft</> : <>讓世界在<br />台夫特看見台灣</>}
@@ -450,7 +450,7 @@ export default function App() {
       {/* Experience Section */}
       <section id="vendors" className="backdrop-blur-sm text-brand-ink relative z-10 -mt-px">
         {/* Market column - Now full width */}
-        <div className="p-12 md:p-24 bg-white/85">
+        <div className="p-12 md:p-24 bg-white/75">
           <div className="container mx-auto">
             <div className="mb-16">
               <SectionHeading 
@@ -485,7 +485,7 @@ export default function App() {
         </div>
 
         {/* Culture column - Now below market */}
-        <div className="p-12 md:p-24 flex flex-col bg-brand-cream/98">
+        <div className="p-12 md:p-24 flex flex-col bg-brand-cream/85">
           <div className="container mx-auto">
             <div className="flex justify-between items-end mb-16">
               <h2 className="text-5xl font-serif">{lang === 'en' ? 'Cultural Experience' : '文化體驗'}</h2>
@@ -509,7 +509,7 @@ export default function App() {
       </section>
 
       {/* Sponsors Section */}
-      <section id="sponsors" className="py-32 bg-white/85 backdrop-blur-sm relative z-10 -mt-px">
+      <section id="sponsors" className="py-32 bg-white/75 backdrop-blur-sm relative z-10 -mt-px">
         <div className="container mx-auto px-6">
           <SectionHeading zh="贊助夥伴" en="Sponsors" number="03" />
           
@@ -540,7 +540,7 @@ export default function App() {
       </section>
 
       {/* Location Section */}
-      <section id="location" className="py-32 bg-brand-cream/98 backdrop-blur-sm relative z-10 -mt-px">
+      <section id="location" className="py-32 bg-brand-cream/85 backdrop-blur-sm relative z-10 -mt-px">
         <div className="container mx-auto px-6">
           <SectionHeading zh="活動地點" en="Venue & Location" number="04" />
           
