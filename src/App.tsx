@@ -32,6 +32,7 @@ interface Vendor {
   name: string;
   type: string;
   items: string[];
+  id: string; // Used for images and logos
 }
 
 interface Game {
@@ -59,56 +60,56 @@ const PROGRAM = {
 
 const VENDORS: ({ en: Vendor, zh: Vendor })[] = [
   { 
-    en: { name: 'Ms. Brenda', type: 'Salty & Sweet', items: ['Taiwanese Stir-fried Vermicelli', 'Assorted Braised Platters', 'Zongzi (Rice Dumplings)', 'Cau-A-Kue', 'Hakka Vegetable Buns', 'Handmade Taiwanese Bread', 'Handmade Fruit Tea'] },
-    zh: { name: 'Ms. Brenda', type: 'Salty & Sweet', items: ['台式米粉炒', '台式綜合滷味', '肉粽', '草仔粿', '客家菜包', '手工台式麵包', '手工水果茶'] }
+    en: { name: 'Ms. Brenda', type: 'Salty & Sweet', items: ['Taiwanese Stir-fried Vermicelli', 'Assorted Braised Platters', 'Zongzi (Rice Dumplings)', 'Cau-A-Kue', 'Hakka Vegetable Buns', 'Handmade Taiwanese Bread', 'Handmade Fruit Tea'], id: 'ms_brenda' },
+    zh: { name: 'Ms. Brenda', type: 'Salty & Sweet', items: ['台式米粉炒', '台式綜合滷味', '肉粽', '草仔粿', '客家菜包', '手工台式麵包', '手工水果茶'], id: 'ms_brenda' }
   },
   { 
-    en: { name: 'Chow It Out', type: 'Desserts & Soup', items: ['Mango Matcha Panna Cotta', 'Caramel Custard Puffs', 'Tieguanyin Cake Roll', 'Basque Cheesecake', 'Ancient Brown Sugar Sweet Soup', 'Medicinal Pork Rib Soup'] },
-    zh: { name: 'Chow It Out', type: 'Desserts & Soup', items: ['芒果抹茶素奶酪', '焦糖卡士達泡芙', '鐵觀音奶凍捲', '巴斯克起司蛋糕', '古早味黑糖甜湯', '藥燉排骨'] }
+    en: { name: 'Chow It Out', type: 'Desserts & Soup', items: ['Mango Matcha Panna Cotta', 'Caramel Custard Puffs', 'Tieguanyin Cake Roll', 'Basque Cheesecake', 'Ancient Brown Sugar Sweet Soup', 'Medicinal Pork Rib Soup'], id: 'chow_it_out' },
+    zh: { name: 'Chow It Out', type: 'Desserts & Soup', items: ['芒果抹茶素奶酪', '焦糖卡士達泡芙', '鐵觀音奶凍捲', '巴斯克起司蛋糕', '古早味黑糖甜湯', '藥燉排骨'], id: 'chow_it_out' }
   },
   { 
-    en: { name: '9ijs', type: 'Shaved Ice', items: ['Snow Ice (Strawberry, Mango, Red Bean, Peanut)', 'Sijichun Tea'] },
-    zh: { name: '9ijs', type: 'Shaved Ice', items: ['雪花冰 (草莓・芒果・紅豆・花生)', '四季春茶'] }
+    en: { name: '9ijs', type: 'Shaved Ice', items: ['Snow Ice (Strawberry, Mango, Red Bean, Peanut)', 'Sijichun Tea'], id: '9ijs' },
+    zh: { name: '9ijs', type: 'Shaved Ice', items: ['雪花冰 (草莓・芒果・紅豆・花生)', '四季春茶'], id: '9ijs' }
   },
   { 
-    en: { name: 'K\'s FAN', type: 'Rice & Drinks', items: ['Classic Taiwanese Oil Rice', 'Traditional Tainan Sticky Rice', 'Sesame Oil Mushroom Rice', 'Taro Ball Jelly', 'Plum Green Tea', 'Cold Brew Tea'] },
-    zh: { name: 'K\'s FAN', type: 'Rice & Drinks', items: ['經典台式油飯', '傳統台南米糕', '麻油杏鮑菇飯', '芋圓仙草凍', '梅子綠茶', '冷泡茶'] }
+    en: { name: 'K\'s FAN', type: 'Rice & Drinks', items: ['Classic Taiwanese Oil Rice', 'Traditional Tainan Sticky Rice', 'Sesame Oil Mushroom Rice', 'Taro Ball Jelly', 'Plum Green Tea', 'Cold Brew Tea'], id: 'ks_fan' },
+    zh: { name: 'K\'s FAN', type: 'Rice & Drinks', items: ['經典台式油飯', '傳統台南米糕', '麻油杏鮑菇飯', '芋圓仙草凍', '梅子綠茶', '冷泡茶'], id: 'ks_fan' }
   },
   { 
-    en: { name: 'Veggie Garden', type: 'Vegetarian', items: ['Vegetarian Chicken Cutlet', 'Onigiri (Kimchi/Tuna/Ham & Corn)', 'Tieguanyin Soft Serve', 'Winter Melon Tea', 'Taiwanese Cold Brew Tea'] },
-    zh: { name: 'Veggie Garden', type: 'Vegetarian', items: ['素雞排', '御飯糰 (泡菜/鮪魚/火腿玉米)', '鐵觀音霜淇淋', '冬瓜茶', '台灣冷泡茶'] }
+    en: { name: 'Veggie Garden', type: 'Vegetarian', items: ['Vegetarian Chicken Cutlet', 'Onigiri (Kimchi/Tuna/Ham & Corn)', 'Tieguanyin Soft Serve', 'Winter Melon Tea', 'Taiwanese Cold Brew Tea'], id: 'veggie_garden' },
+    zh: { name: 'Veggie Garden', type: 'Vegetarian', items: ['素雞排', '御飯糰 (泡菜/鮪魚/火腿玉米)', '鐵觀音霜淇淋', '冬瓜茶', '台灣冷泡茶'], id: 'veggie_garden' }
   },
   { 
-    en: { name: 'V-Kitchen', type: 'Taiwanese Snacks', items: ['Taiwanese Meatballs (Ba-wan)'] },
-    zh: { name: 'V 記美食', type: 'Taiwanese Snacks', items: ['台式肉圓'] }
+    en: { name: 'V-Kitchen', type: 'Taiwanese Snacks', items: ['Taiwanese Meatballs (Ba-wan)'], id: 'v_kitchen' },
+    zh: { name: 'V 記美食', type: 'Taiwanese Snacks', items: ['台式肉圓'], id: 'v_kitchen' }
   },
   { 
-    en: { name: 'Machi Machi', type: 'Beverages', items: ['Bubble Tea', 'Sun Moon Lake Black Tea + Kanten', 'Orange Green Tea + Coconut Jelly'] },
-    zh: { name: 'Machi Machi', type: 'Beverages', items: ['珍珠奶茶 Bubble Tea', '日月潭紅茶 + 寒天', '柳橙綠茶 + 椰果'] }
+    en: { name: 'Machi Machi', type: 'Beverages', items: ['Bubble Tea', 'Sun Moon Lake Black Tea + Kanten', 'Orange Green Tea + Coconut Jelly'], id: 'machi_machi' },
+    zh: { name: 'Machi Machi', type: 'Beverages', items: ['珍珠奶茶 Bubble Tea', '日月潭紅茶 + 寒天', '柳橙綠茶 + 椰果'], id: 'machi_machi' }
   },
   { 
-    en: { name: 'Mei\'s Kitchen', type: 'Gua Bao & Veg', items: ['Classic Gua Bao', 'Vegetarian Gua Bao', 'Tempeh Gua Bao', 'Taiwanese Veggie Noodle Soup', 'Tea Eggs', 'Pineapple Cakes'] },
-    zh: { name: 'Mei\'s Kitchen', type: 'Gua Bao & Veg', items: ['花生滷蛋刈包', '糖醋素雞刈包', '天貝刈包', '台式素湯麵', '茶葉蛋', '鳳梨酥'] }
+    en: { name: 'Mei\'s Kitchen', type: 'Gua Bao & Veg', items: ['Classic Gua Bao', 'Vegetarian Gua Bao', 'Tempeh Gua Bao', 'Taiwanese Veggie Noodle Soup', 'Tea Eggs', 'Pineapple Cakes'], id: 'meis_kitchen' },
+    zh: { name: 'Mei\'s Kitchen', type: 'Gua Bao & Veg', items: ['花生滷蛋刈包', '糖醋素雞刈包', '天貝刈包', '台式素湯麵', '茶葉蛋', '鳳梨酥'], id: 'meis_kitchen' }
   },
   { 
-    en: { name: 'Little Book Project', type: 'Creative Selection', items: ['Little Book Project', 'Taiwanese Creative Design Items'] },
-    zh: { name: '小冊選書', type: 'Creative Selection', items: ['Little Book Project', '台灣文創設計商品'] }
+    en: { name: 'Little Book Project', type: 'Creative Selection', items: ['Little Book Project', 'Taiwanese Creative Design Items'], id: 'little_book' },
+    zh: { name: '小冊選書', type: 'Creative Selection', items: ['Little Book Project', '台灣文創設計商品'], id: 'little_book' }
   },
   { 
-    en: { name: 'Bao & Bowl', type: 'Mains', items: ['Handmade Braised Pork Gua Bao', 'Handmade Tofu Gua Bao', 'Hand-cut Braised Pork Rice', 'Taiwanese Cold Noodles', 'Taiwanese Grilled Sausage'] },
-    zh: { name: 'Bao & Bowl', type: 'Mains', items: ['手工爌肉刈包', '手工滷豆腐刈包', '手切滷肉飯', '台式涼麵', '台式烤香腸'] }
+    en: { name: 'Bao & Bowl', type: 'Mains', items: ['Handmade Braised Pork Gua Bao', 'Handmade Tofu Gua Bao', 'Hand-cut Braised Pork Rice', 'Taiwanese Cold Noodles', 'Taiwanese Grilled Sausage'], id: 'bao_bowl' },
+    zh: { name: 'Bao & Bowl', type: 'Mains', items: ['手工爌肉刈包', '手工滷豆腐刈包', '手切滷肉飯', '台式涼麵', '台式烤香腸'] , id: 'bao_bowl'}
   },
   { 
-    en: { name: 'Cha Bar', type: 'Tea Specialties', items: ['Specialty Taiwanese Tea', 'Taiwanese Cold Brew Tea'] },
-    zh: { name: 'Cha Bar — 呷吧', type: 'Tea Specialties', items: ['特色台灣茶飲', '台灣冷泡茶'] }
+    en: { name: 'Cha Bar', type: 'Tea Specialties', items: ['Specialty Taiwanese Tea', 'Taiwanese Cold Brew Tea'], id: 'cha_bar' },
+    zh: { name: 'Cha Bar — 呷吧', type: 'Tea Specialties', items: ['特色台灣茶飲', '台灣冷泡茶'], id: 'cha_bar' }
   },
   { 
-    en: { name: 'Design Studio Samaya', type: 'Design & Craft', items: ['Taiwan Style Design Postcards', 'Cultural Creative Merch', 'Art Selection'] },
-    zh: { name: 'Design Studio Samaya', type: 'Design & Craft', items: ['台味設計明信片', '文化創意週邊', '藝術選品'] }
+    en: { name: 'Design Studio Samaya', type: 'Design & Craft', items: ['Taiwan Style Design Postcards', 'Cultural Creative Merch', 'Art Selection'], id: 'samaya' },
+    zh: { name: 'Design Studio Samaya', type: 'Design & Craft', items: ['台味設計明信片', '文化創意週邊', '藝術選品'], id: 'samaya' }
   },
   { 
-    en: { name: 'DTSO', type: 'Official Booth', items: ['Tote Bag', 'Postcards', 'Taiwan Beer', 'HeySong Sarsaparilla', 'Barley Black Tea', 'Tea Eggs', 'Taiwanese Snack Gift Pack'] },
-    zh: { name: 'DTSO 學生會', type: 'Official Booth', items: ['帆布袋', '明信片', '台灣啤酒', '黑松沙士', '麥香紅茶', '茶葉蛋', '台灣零食禮包'] }
+    en: { name: 'DTSO', type: 'Official Booth', items: ['Tote Bag', 'Postcards', 'Taiwan Beer', 'HeySong Sarsaparilla', 'Barley Black Tea', 'Tea Eggs', 'Taiwanese Snack Gift Pack'], id: 'dtso' },
+    zh: { name: 'DTSO 學生會', type: 'Official Booth', items: ['帆布袋', '明信片', '台灣啤酒', '黑松沙士', '麥香紅茶', '茶葉蛋', '台灣零食禮包'], id: 'dtso' }
   },
 ];
 
@@ -142,28 +143,44 @@ const VendorModal = ({ vendor, onClose, lang }: { vendor: Vendor, onClose: () =>
     onClick={onClose}
   >
     <motion.div 
-      initial={{ y: 20, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      className="bg-brand-cream border editorial-divider max-w-xl w-full p-12 relative"
+      initial={{ scale: 0.9, opacity: 0 }}
+      animate={{ scale: 1, opacity: 1 }}
+      className="bg-brand-cream border editorial-divider max-w-4xl w-full flex flex-col md:flex-row relative overflow-hidden"
       onClick={e => e.stopPropagation()}
     >
-      <button onClick={onClose} className="absolute top-8 right-8 hover:text-brand-accent transition-colors">
-        <X size={24} />
+      <button onClick={onClose} className="absolute top-6 right-6 z-10 hover:text-brand-accent transition-colors bg-brand-cream/50 p-2 rounded-full backdrop-blur-sm">
+        <X size={20} />
       </button>
-      <span className="label-xs text-brand-accent mb-4 block uppercase flex items-center gap-2">
-        <Award size={10} /> {vendor.type}
-      </span>
-      <h3 className="font-serif text-4xl font-black mb-8 italic-none">{vendor.name}</h3>
-      <div className="space-y-4">
-        <p className="label-xs opacity-40 mb-2">{lang === 'en' ? 'Selected Items' : '販售項目'}</p>
-        <ul className="space-y-3 prose font-display">
-          {vendor.items.map((item, i) => (
-            <li key={i} className="font-serif text-lg border-b editorial-divider pb-2 flex justify-between items-center group">
-              <span className="opacity-90">{item}</span>
-              <div className="h-px w-0 bg-brand-accent group-hover:w-8 transition-all duration-500" />
-            </li>
-          ))}
-        </ul>
+      
+      {/* Left: Text Content */}
+      <div className="flex-1 p-12">
+        <span className="label-xs text-brand-accent mb-4 block uppercase flex items-center gap-2">
+          <Award size={10} /> {vendor.type}
+        </span>
+        <h3 className="font-serif text-4xl font-black mb-8">{vendor.name}</h3>
+        <div className="space-y-4">
+          <p className="label-xs opacity-40 mb-2">{lang === 'en' ? 'Selected Items' : '販售項目'}</p>
+          <ul className="space-y-3 prose font-display">
+            {vendor.items.map((item, i) => (
+              <li key={i} className="font-serif text-lg border-b editorial-divider pb-2 flex justify-between items-center group">
+                <span className="opacity-90">{item}</span>
+                <div className="h-px w-0 bg-brand-accent group-hover:w-8 transition-all duration-500" />
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      {/* Right: Photo Space */}
+      <div className="w-full md:w-2/5 bg-brand-ink/5 flex items-center justify-center border-l editorial-divider min-h-[300px]">
+        <img 
+          src={`/photos/vendors/${vendor.id}.png`} 
+          alt={vendor.name} 
+          className="w-full h-full object-cover"
+          onError={(e) => {
+            (e.target as HTMLImageElement).src = 'https://via.placeholder.com/600x800?text=Photo+Coming+Soon';
+          }}
+        />
       </div>
     </motion.div>
   </motion.div>
@@ -189,53 +206,40 @@ const Navbar = ({ lang, setLang }: { lang: 'en' | 'zh', setLang: (l: 'en' | 'zh'
   return (
     <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 border-b editorial-divider ${scrolled ? 'bg-brand-cream/90 backdrop-blur-md py-4' : 'bg-transparent py-8'}`}>
       <div className="px-12 flex justify-between items-center">
-        <div className="flex items-center gap-8">
+        <div className="flex items-center gap-4">
+          <img src="/DTSO.png" alt="DTSO" className="h-10 w-10 object-contain" />
           <a href="#" className="label-xs not-italic tracking-widest">
             TAIWAN CULTURE NIGHT <span className="opacity-40 ml-2">DELFT</span>
           </a>
-          
-          {/* Language Toggle Toggle (Desktop) */}
-          <div className="hidden md:flex bg-brand-ink/5 p-1 rounded-sm gap-1 ml-4 border editorial-divider">
-            <button 
-              onClick={() => setLang('en')}
-              className={`text-[9px] uppercase tracking-widest px-2 py-0.5 transition-all ${lang === 'en' ? 'bg-brand-ink text-brand-cream' : 'text-brand-ink/40 hover:text-brand-ink'}`}
-            >
-              EN
-            </button>
-            <button 
-              onClick={() => setLang('zh')}
-              className={`text-[9px] uppercase tracking-widest px-2 py-0.5 transition-all ${lang === 'zh' ? 'bg-brand-ink text-brand-cream' : 'text-brand-ink/40 hover:text-brand-ink'}`}
-            >
-              ZH
-            </button>
-          </div>
         </div>
         
-        {/* Desktop Links */}
-        <div className="hidden md:flex items-center gap-10">
-          {navLinks.map((link) => (
-            <a 
-              key={link.name} 
-              href={link.href} 
-              className="text-xs uppercase tracking-widest font-semibold hover:text-brand-accent transition-colors"
-            >
-              {link.name}
+        {/* Top Right: Actions Group */}
+        <div className="flex items-center gap-6">
+          {/* Desktop Links */}
+          <div className="hidden md:flex items-center gap-10">
+            {navLinks.map((link) => (
+              <a 
+                key={link.name} 
+                href={link.href} 
+                className="text-[10px] uppercase tracking-widest font-bold hover:text-brand-accent transition-colors"
+              >
+                {link.name}
+              </a>
+            ))}
+            <a href="#location" className="text-[10px] uppercase tracking-widest font-bold bg-brand-accent text-brand-cream px-4 py-1.5 hover:bg-brand-ink transition-colors">
+              {lang === 'en' ? 'Location' : '活動地點'}
             </a>
-          ))}
-          <a href="#location" className="text-xs uppercase tracking-widest font-semibold bg-brand-accent text-brand-cream px-4 py-1 hover:bg-brand-ink transition-colors">
-            {lang === 'en' ? 'Location' : '活動地點'}
-          </a>
-        </div>
+          </div>
 
-        {/* Mobile Toggle Group */}
-        <div className="flex items-center gap-4 md:hidden">
+          {/* Language Toggle (Show opposite) */}
           <button 
             onClick={() => setLang(lang === 'en' ? 'zh' : 'en')}
-            className="text-[10px] bg-brand-ink/5 px-2 py-1 uppercase tracking-widest font-bold border editorial-divider"
+            className="text-[10px] bg-brand-ink text-brand-cream px-3 py-1.5 uppercase tracking-widest font-bold border border-brand-ink hover:bg-brand-cream hover:text-brand-ink transition-all"
           >
             {lang === 'en' ? 'ZH' : 'EN'}
           </button>
-          <button className="text-brand-ink" onClick={() => setIsOpen(!isOpen)}>
+
+          <button className="text-brand-ink md:hidden" onClick={() => setIsOpen(!isOpen)}>
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
@@ -278,7 +282,7 @@ const Hero = ({ lang }: { lang: 'en' | 'zh' }) => {
           transition={{ duration: 1 }}
         >
           <span className="label-xs text-gray-400 mb-6 block uppercase">Delft / 2026</span>
-          <h1 className="text-[120px] leading-[1.1] font-serif font-black mb-10 -ml-1 not-italic">
+          <h1 className="text-[120px] leading-[0.9] font-serif font-black mb-10 -ml-1 not-italic">
             台灣<br />之夜
           </h1>
           <p className="text-lg leading-[1.8] text-brand-ink/80 font-light max-w-sm mb-12">
@@ -361,10 +365,10 @@ export default function App() {
       <div className="fixed inset-0 z-[-5] pointer-events-none overflow-hidden opacity-40">
         <div className="absolute inset-0 bg-brand-accent/5 z-0" />
         <motion.div style={{ y: bgY1 }} className="absolute top-0 left-0 w-full h-[150vh]">
-          <img src="/artifact/input_file_1.png" alt="BG 1" className="w-full h-full object-cover grayscale contrast-125 mix-blend-multiply" />
+          <img src="/bg_street.jpg" alt="BG 1" className="w-full h-full object-cover grayscale contrast-125 mix-blend-multiply" />
         </motion.div>
         <motion.div style={{ y: bgY2 }} className="absolute bottom-[-50vh] left-0 w-full h-[150vh]">
-          <img src="/artifact/input_file_2.png" alt="BG 2" className="w-full h-full object-cover grayscale contrast-125 mix-blend-multiply" />
+          <img src="/bg_lanterns.jpg" alt="BG 2" className="w-full h-full object-cover grayscale contrast-125 mix-blend-multiply" />
         </motion.div>
       </div>
 
@@ -457,16 +461,24 @@ export default function App() {
         <div className="col-span-12 lg:col-span-5 p-12 border-r editorial-divider bg-white/60">
           <div className="flex justify-between items-end mb-12">
             <h2 className="text-4xl font-serif">{lang === 'en' ? 'Main Market' : '美食市集'}</h2>
-            <span className="label-xs opacity-40">{lang === 'en' ? 'Vendors 01-13' : '各項料理'}</span>
           </div>
-          <div className="space-y-6">
+          <div className="space-y-4">
             {VENDORS.map((v, i) => (
               <button 
                 key={i} 
                 onClick={() => setSelectedVendor(v[lang])}
-                className="group w-full text-left border-b editorial-divider pb-4 last:border-0 outline-none"
+                className="group w-full text-left border-b editorial-divider pb-4 last:border-0 outline-none flex items-center gap-6"
               >
-                <div className="flex justify-between items-baseline mb-2">
+                {/* Vendor Logo Placeholder */}
+                <div className="w-12 h-12 bg-brand-ink/5 border editorial-divider flex items-center justify-center shrink-0 group-hover:border-brand-accent transition-colors">
+                  <img 
+                    src={`/logos/vendors/${v[lang].id}.png`} 
+                    alt="" 
+                    className="w-full h-full object-contain p-2 grayscale group-hover:grayscale-0 transition-all"
+                    onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
+                  />
+                </div>
+                <div className="flex-1 flex justify-between items-baseline">
                   <h5 className="font-serif text-xl group-hover:text-brand-accent transition-colors font-bold uppercase">{v[lang].name}</h5>
                   <span className="text-[10px] uppercase font-bold tracking-widest opacity-30 group-hover:opacity-100 transition-opacity underline decoration-brand-accent decoration-2 underline-offset-4">{lang === 'en' ? 'Detail +' : '詳情 +'}</span>
                 </div>
@@ -479,18 +491,17 @@ export default function App() {
         <div className="col-span-12 lg:col-span-7 p-12 flex flex-col bg-brand-cream/40">
           <div className="flex justify-between items-end mb-12">
             <h2 className="text-4xl font-serif">{lang === 'en' ? 'Cultural Experience' : '文化體驗'}</h2>
-            <span className="label-xs opacity-40">{lang === 'en' ? 'Games & Interaction' : '遊戲與交流'}</span>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+          <div className="flex flex-col space-y-12">
             {GAMES[lang].map((game, i) => (
-              <div key={i} className="flex gap-6 items-start group">
-                <div className="w-12 h-12 bg-brand-ink/5 flex items-center justify-center font-display text-xs font-bold opacity-30 group-hover:bg-brand-accent group-hover:text-white group-hover:opacity-100 transition-all">
+              <div key={i} className="flex gap-10 items-start group">
+                <div className="w-16 h-16 bg-brand-ink/5 flex items-center justify-center font-display text-lg font-bold opacity-30 group-hover:bg-brand-accent group-hover:text-white group-hover:opacity-100 transition-all shrink-0">
                   0{i + 1}
                 </div>
                 <div>
-                  <h5 className="font-serif text-lg leading-tight mb-1 font-bold">{game.name}</h5>
-                  <p className="text-[10px] uppercase tracking-widest text-brand-accent font-bold mb-3">{game.location}</p>
-                <p className="text-xs opacity-60 font-light leading-relaxed">{game.description}</p>
+                  <h5 className="font-serif text-3xl leading-tight mb-2 font-bold group-hover:text-brand-accent transition-colors">{game.name}</h5>
+                  <p className="text-xs uppercase tracking-widest text-brand-accent font-bold mb-4">{game.location}</p>
+                  <p className="text-sm opacity-60 font-light leading-relaxed max-w-lg">{game.description}</p>
                 </div>
               </div>
             ))}
@@ -503,22 +514,34 @@ export default function App() {
         <div className="container mx-auto px-6">
           <SectionHeading zh="贊助夥伴" en="Sponsors" number="03" />
           
-          <div className="p-12 border editorial-divider overflow-hidden bg-brand-cream/50 backdrop-blur-md">
-            <img 
-              src="/artifact/input_file_0.png" 
-              alt="Sponsors" 
-              className="w-full h-auto grayscale contrast-125 opacity-70 hover:opacity-100 hover:grayscale-0 transition-all duration-700 max-w-4xl mx-auto"
-            />
+          <div className="p-12 border editorial-divider overflow-hidden bg-brand-cream/50 backdrop-blur-md mb-20">
+            <div className="flex flex-wrap justify-center gap-16 items-center">
+               {[
+                 { id: 'office', name: 'Representative Office' },
+                 { id: 'moe', name: 'Ministry of Education' },
+                 { id: 'tba', name: 'TBA-NL' },
+                 { id: 'school', name: 'Taipei School' },
+                 { id: 'typin', name: 'TYPIN' }
+               ].map(logo => (
+                 <div key={logo.id} className="w-32 h-20 flex items-center justify-center grayscale hover:grayscale-0 transition-all opacity-60 hover:opacity-100">
+                    <img 
+                      src={`/logos/sponsors/${logo.id}.png`} 
+                      alt={logo.name}
+                      className="max-w-full max-h-full object-contain"
+                      onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
+                    />
+                 </div>
+               ))}
+            </div>
           </div>
           
-          <div className="mt-20 pb-20 max-w-4xl">
-            <p className="label-xs opacity-30 mb-8 uppercase tracking-widest text-brand-accent">{lang === 'en' ? 'Our Partners' : '贊助夥伴'}</p>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-12 gap-y-6">
-              <span className="font-serif text-lg">{lang === 'en' ? 'Taipei Representative Office in the Netherlands' : '駐荷蘭台北代表處'}</span>
-              <span className="font-serif text-lg">{lang === 'en' ? 'Education Division, Ministry of Education' : '台灣教育部'}</span>
-              <span className="font-serif text-lg">{lang === 'en' ? 'Taiwan Business Association in the Netherlands' : '荷蘭台灣商會'}</span>
-              <span className="font-serif text-lg">{lang === 'en' ? 'Taipei School in the Netherlands' : '荷蘭台北學校'}</span>
-              <span className="font-serif text-lg col-span-2 md:col-span-1 leading-snug">{lang === 'en' ? 'Taiwanese Junior Chamber Professionals Netherlands' : '荷蘭台灣專業青年會 (TJCP)'}</span>
+          <div>
+            <div className="flex flex-wrap items-center gap-x-12 gap-y-8 font-serif text-xl opacity-80">
+              <span>{lang === 'en' ? 'Taipei Representative Office in the Netherlands' : '駐荷蘭台北代表處'}</span>
+              <span>{lang === 'en' ? 'Education Division, Ministry of Education' : '台灣教育部'}</span>
+              <span>{lang === 'en' ? 'Taiwan Business Association in the Netherlands' : '荷蘭台灣商會'}</span>
+              <span>{lang === 'en' ? 'Taipei School in the Netherlands' : '荷蘭台北學校'}</span>
+              <span>{lang === 'en' ? 'Taiwanese Junior Chamber Professionals Netherlands' : '荷蘭台灣專業青年會'}</span>
             </div>
           </div>
         </div>
@@ -570,14 +593,17 @@ export default function App() {
       </section>
 
       {/* Footer */}
-      <footer className="flex flex-col md:flex-row items-center justify-between px-12 bg-brand-ink/95 text-brand-cream py-10 md:h-20 md:py-0 backdrop-blur-md">
-        <div className="label-xs opacity-60">Venue: DUWO Common Room, Delft</div>
+      <footer className="flex flex-col md:flex-row items-center justify-between px-12 bg-brand-ink/95 text-brand-cream py-10 md:h-24 md:py-0 backdrop-blur-md">
+        <div className="flex items-center gap-6">
+          <img src="/DTSO.png" alt="DTSO" className="h-12 w-12 object-contain grayscale brightness-200" />
+          <div className="label-xs opacity-60">Venue: DUWO Common Room, Delft</div>
+        </div>
         <div className="label-xs flex gap-8 mt-4 md:mt-0">
-          <a href="#" className="hover:opacity-50 transition-opacity uppercase font-bold tracking-widest flex items-center gap-2">
+          <a href="https://www.instagram.com/dtso_delft/" target="_blank" rel="noopener noreferrer" className="hover:opacity-50 transition-opacity uppercase font-bold tracking-widest flex items-center gap-2">
             <Instagram size={12} /> Instagram
           </a>
-          <a href="#" className="hover:opacity-50 transition-opacity uppercase font-bold tracking-widest flex items-center gap-2">
-             Email
+          <a href="mailto:dtso.delft@gmail.com" className="hover:opacity-50 transition-opacity uppercase font-bold tracking-widest flex items-center gap-2">
+            <Mail size={12} /> Email
           </a>
         </div>
         <div className="label-xs opacity-40 mt-4 md:mt-0">© 2026 DTSO Delft Taiwan Student Association</div>
