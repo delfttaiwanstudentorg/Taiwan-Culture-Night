@@ -141,7 +141,7 @@ const VendorModal = ({ vendor, onClose, lang }: { vendor: Vendor, onClose: () =>
     <motion.div 
       initial={{ scale: 0.9, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}
-      className="bg-brand-cream border editorial-divider max-w-4xl w-full flex flex-col md:flex-row relative overflow-hidden"
+      className="bg-brand-cream border editorial-divider max-w-4xl w-full flex flex-row relative overflow-hidden max-h-[90vh]"
       onClick={e => e.stopPropagation()}
     >
       <button onClick={onClose} className="absolute top-6 right-6 z-10 hover:text-brand-accent transition-colors bg-brand-cream/50 p-2 rounded-full backdrop-blur-sm">
@@ -149,16 +149,16 @@ const VendorModal = ({ vendor, onClose, lang }: { vendor: Vendor, onClose: () =>
       </button>
       
       {/* Left: Text Content */}
-      <div className="flex-1 p-12">
+      <div className="flex-[1.2] p-6 md:p-12 overflow-y-auto">
         <span className="label-xs text-brand-accent mb-4 block uppercase flex items-center gap-2">
           <Award size={10} /> {vendor.type}
         </span>
-        <h3 className="font-serif text-4xl font-black mb-8">{vendor.name}</h3>
+        <h3 className="font-serif text-xl md:text-4xl font-black mb-4 md:mb-8">{vendor.name}</h3>
         <div className="space-y-4">
           <p className="label-xs opacity-40 mb-2">{lang === 'en' ? 'Selected Items' : '販售項目'}</p>
-          <ul className="space-y-3 prose font-display">
+          <ul className="space-y-2 md:space-y-3 prose font-display">
             {vendor.items.map((item, i) => (
-              <li key={i} className="font-serif text-lg border-b editorial-divider pb-2 flex justify-between items-center group">
+              <li key={i} className="font-serif text-xs md:text-lg border-b editorial-divider pb-1 md:pb-2 flex justify-between items-center group">
                 <span className="opacity-90">{item}</span>
                 <div className="h-px w-0 bg-brand-accent group-hover:w-8 transition-all duration-500" />
               </li>
@@ -168,7 +168,7 @@ const VendorModal = ({ vendor, onClose, lang }: { vendor: Vendor, onClose: () =>
       </div>
 
       {/* Right: Photo Space */}
-      <div className="w-full md:w-2/5 bg-brand-ink/5 flex items-center justify-center border-l editorial-divider min-h-[300px]">
+      <div className="flex-1 bg-brand-ink/5 flex items-center justify-center border-l editorial-divider">
         <img 
           src={`${import.meta.env.BASE_URL}photos/vendors/${vendor.id}.png`} 
           alt={vendor.name} 
