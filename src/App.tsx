@@ -197,6 +197,7 @@ const Navbar = ({ lang, setLang }: { lang: 'en' | 'zh', setLang: (l: 'en' | 'zh'
     { name: lang === 'en' ? 'Programme' : '活動細流', href: '#schedule' },
     { name: lang === 'en' ? 'Vendors' : '攤販遊戲', href: '#vendors' },
     { name: lang === 'en' ? 'Sponsors' : '贊助夥伴', href: '#sponsors' },
+    { name: lang === 'en' ? 'Location' : '活動地點', href: '#location' },
   ];
 
   return (
@@ -223,9 +224,6 @@ const Navbar = ({ lang, setLang }: { lang: 'en' | 'zh', setLang: (l: 'en' | 'zh'
                 {link.name}
               </a>
             ))}
-            <a href="#location" className="text-[13px] uppercase tracking-widest font-bold bg-brand-accent text-brand-cream px-6 py-2 hover:bg-white hover:text-brand-ink transition-all">
-              {lang === 'en' ? 'Location' : '活動地點'}
-            </a>
           </div>
 
           <div className="flex items-center gap-4">
@@ -350,7 +348,7 @@ export default function App() {
   const bgY2 = useTransform(scrollY, [0, 5000], [200, 0]);
 
   return (
-    <div className="relative text-brand-ink min-h-screen flex flex-col editorial-thick-border box-border overflow-x-hidden">
+    <div className="relative text-brand-ink min-h-screen flex flex-col box-border overflow-x-hidden">
       {/* Background */}
       <div className="fixed inset-0 z-[-10] pointer-events-none bg-brand-cream" />
       <div className="fixed inset-0 z-[-5] pointer-events-none overflow-hidden opacity-85">
