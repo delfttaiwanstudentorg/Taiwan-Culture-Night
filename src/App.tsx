@@ -107,7 +107,6 @@ const VENDORS: ({ en: Vendor, zh: Vendor })[] = [
     en: { name: 'Design Studio Samaya', type: 'Design & Craft', items: ['Taiwan Style Design Postcards', 'Cultural Creative Merch', 'Art Selection'], id: 'samaya' },
     zh: { name: 'Design Studio Samaya', type: 'Design & Craft', items: ['台味設計明信片', '文化創意週邊', '藝術選品'], id: 'samaya' }
   },
-  },
 ];
 
 const GAMES = {
