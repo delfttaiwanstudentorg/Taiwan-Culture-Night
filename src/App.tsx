@@ -201,7 +201,7 @@ const Navbar = ({ lang, setLang }: { lang: 'en' | 'zh', setLang: (l: 'en' | 'zh'
   ];
 
   return (
-    <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 border-b border-white/10 ${scrolled ? 'bg-brand-ink/90 backdrop-blur-md py-4' : 'bg-transparent py-8'}`}>
+    <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 border-b border-white/10 ${scrolled ? 'bg-brand-ink/90 backdrop-blur-sm py-4' : 'bg-transparent py-8'}`}>
       <div className="px-12 flex justify-between items-center">
         {/* Logo & Title Group */}
         <div className="flex items-center gap-4 md:gap-6">
@@ -272,7 +272,7 @@ const Hero = ({ lang }: { lang: 'en' | 'zh' }) => {
       <div className="absolute top-0 left-0 w-full h-40 bg-gradient-to-b from-black/60 to-transparent z-40 pointer-events-none" />
 
       {/* Left Column: Title & Intro */}
-      <div className="col-span-12 lg:col-span-5 p-12 border-r border-white/10 flex flex-col justify-center pt-32 bg-brand-ink/75 md:bg-brand-ink/85 backdrop-blur-md text-brand-cream">
+      <div className="col-span-12 lg:col-span-5 p-12 border-r border-white/10 flex flex-col justify-center pt-32 bg-brand-ink/75 md:bg-brand-ink/85 backdrop-blur-sm text-brand-cream">
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
@@ -303,7 +303,7 @@ const Hero = ({ lang }: { lang: 'en' | 'zh' }) => {
       </div>
 
       {/* Right Column: Hero Visual Overlay */}
-      <div className="col-span-12 lg:col-span-7 relative overflow-hidden pt-32 lg:pt-0 backdrop-blur-md bg-brand-ink/40 md:bg-brand-ink/60">
+      <div className="col-span-12 lg:col-span-7 relative overflow-hidden pt-32 lg:pt-0 backdrop-blur-sm bg-brand-ink/40 md:bg-brand-ink/60">
         <div className="absolute inset-0 bg-gradient-to-br from-brand-ink/40 via-brand-ink/20 to-brand-ink/50 z-10" />
         {/* Colorful accent overlay */}
         <div className="absolute inset-0 opacity-30 mix-blend-overlay">
@@ -372,7 +372,7 @@ export default function App() {
       <Hero lang={lang} />
 
       {/* About Section */}
-      <section id="about" className="grid grid-cols-12 backdrop-blur-md bg-brand-cream/75 md:bg-brand-cream/90 relative z-10 -mt-px">
+      <section id="about" className="grid grid-cols-12 backdrop-blur-sm bg-brand-cream/75 md:bg-brand-cream/90 relative z-10 -mt-px">
         <div className="col-span-12 lg:col-span-5 p-12 border-r editorial-divider flex flex-col justify-center">
             <h3 className="font-serif text-5xl leading-[1.3] mb-12 not-italic">
               {lang === 'en' ? <>Showcasing Taiwan<br />to the World from Delft</> : <>讓世界在<br />台夫特看見台灣</>}
@@ -446,7 +446,7 @@ export default function App() {
 
 
       {/* Experience Section */}
-      <section id="vendors" className="backdrop-blur-md text-brand-ink relative z-10 -mt-px">
+      <section id="vendors" className="backdrop-blur-sm text-brand-ink relative z-10 -mt-px">
         {/* Market column - Now full width */}
         <div className="p-12 md:p-24 bg-white/75 md:bg-white/80">
           <div className="container mx-auto">
@@ -483,7 +483,7 @@ export default function App() {
         </div>
 
         {/* Culture column - Now below market */}
-        <div className="p-12 md:p-24 flex flex-col backdrop-blur-md bg-brand-cream/75 md:bg-brand-cream/85">
+        <div className="p-12 md:p-24 flex flex-col backdrop-blur-sm bg-brand-cream/75 md:bg-brand-cream/85">
           <div className="container mx-auto">
             <div className="flex justify-between items-end mb-16">
               <h2 className="text-5xl font-serif">{lang === 'en' ? 'Cultural Experience' : '文化體驗'}</h2>
@@ -507,7 +507,7 @@ export default function App() {
       </section>
 
       {/* Sponsors Section */}
-      <section id="sponsors" className="py-32 bg-white/75 md:bg-white/80 backdrop-blur-md relative z-10 -mt-px">
+      <section id="sponsors" className="py-32 bg-white/75 md:bg-white/80 backdrop-blur-sm relative z-10 -mt-px">
         <div className="container mx-auto px-6">
           <SectionHeading zh="贊助夥伴" en="Sponsors" number="03" />
           
@@ -538,7 +538,7 @@ export default function App() {
       </section>
 
       {/* Location Section */}
-      <section id="location" className="py-32 bg-brand-cream/75 md:bg-brand-cream/90 backdrop-blur-md relative z-10 -mt-px">
+      <section id="location" className="py-32 bg-brand-cream/75 md:bg-brand-cream/90 backdrop-blur-sm relative z-10 -mt-px">
         <div className="container mx-auto px-6">
           <SectionHeading zh="活動地點" en="Venue & Location" number="04" />
           
@@ -583,7 +583,7 @@ export default function App() {
       </section>
 
       {/* Footer */}
-      <footer className="flex flex-col md:flex-row items-center justify-between px-6 md:px-12 bg-brand-ink/95 text-brand-cream py-10 md:h-24 md:py-0 backdrop-blur-md">
+      <footer className="flex flex-col md:flex-row items-center justify-between px-6 md:px-12 bg-brand-ink/95 text-brand-cream py-10 md:h-24 md:py-0 backdrop-blur-sm">
         <div className="flex items-center gap-4 md:gap-6 mb-8 md:mb-0">
           <img src={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/dtso.png`} alt="DTSO" className="h-10 w-10 md:h-12 md:w-12 object-contain" />
           <div className="text-[10px] md:label-xs opacity-60">Venue: DUWO Common Room, Delft</div>
