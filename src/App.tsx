@@ -203,9 +203,9 @@ const Navbar = ({ lang, setLang }: { lang: 'en' | 'zh', setLang: (l: 'en' | 'zh'
     <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 border-b border-white/10 ${scrolled ? 'bg-brand-ink/90 backdrop-blur-md py-4' : 'bg-transparent py-8'}`}>
       <div className="px-12 flex justify-between items-center">
         {/* Logo & Title Group */}
-        <div className="flex items-center gap-6">
-          <img src={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/dtso.png`} alt="DTSO" className="h-20 w-20 object-contain" />
-          <a href="#" className="font-serif text-3xl tracking-widest text-white drop-shadow-lg not-italic font-medium">
+        <div className="flex items-center gap-4 md:gap-6">
+          <img src={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/dtso.png`} alt="DTSO" className="h-12 w-12 md:h-20 md:w-20 object-contain" />
+          <a href="#" className="font-serif text-xl md:text-3xl tracking-widest text-white drop-shadow-lg not-italic font-medium hidden sm:block">
             TAIWAN CULTURE NIGHT <span className="opacity-60 ml-2 font-sans text-xs align-middle">DELFT</span>
           </a>
         </div>
@@ -228,21 +228,20 @@ const Navbar = ({ lang, setLang }: { lang: 'en' | 'zh', setLang: (l: 'en' | 'zh'
             </a>
           </div>
 
-          {/* Language Toggle */}
-          <button 
-            onClick={() => setLang(lang === 'en' ? 'zh' : 'en')}
-            className="w-10 h-10 border border-white/30 flex items-center justify-center text-[10px] text-white hover:border-brand-accent hover:text-brand-accent transition-all uppercase tracking-tighter"
-          >
-            {lang === 'en' ? 'ZH' : 'EN'}
-          </button>
-
-          <button className="text-white md:hidden" onClick={() => setIsOpen(!isOpen)}>
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          <div className="flex items-center gap-4">
+            <button 
+              onClick={() => setLang(lang === 'en' ? 'zh' : 'en')}
+              className="text-[10px] font-bold border border-white/30 px-2 py-1 text-white hover:bg-white hover:text-brand-ink transition-colors"
+            >
+              {lang === 'en' ? 'ZH' : 'EN'}
+            </button>
+            <button className="text-white md:hidden" onClick={() => setIsOpen(!isOpen)}>
+              {isOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
       </div>
 
-      {/* Mobile Menu */}
       <AnimatePresence>
         {isOpen && (
           <motion.div 
@@ -282,7 +281,7 @@ const Hero = ({ lang }: { lang: 'en' | 'zh' }) => {
           transition={{ duration: 1 }}
         >
           <span className="label-xs text-brand-accent mb-6 block uppercase tracking-[0.3em] font-bold">Delft / 2026</span>
-          <h1 className="text-[120px] leading-[0.9] font-serif font-black mb-10 -ml-1 not-italic">
+          <h1 className="text-6xl md:text-8xl lg:text-[120px] leading-[0.9] font-serif font-black mb-10 -ml-1 not-italic">
             台灣<br />之夜
           </h1>
           <p className="text-xl leading-[1.8] text-brand-cream/80 font-light max-w-sm mb-12">
@@ -319,9 +318,9 @@ const Hero = ({ lang }: { lang: 'en' | 'zh' }) => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.5 }}
           >
-            <h2 className="text-brand-cream/60 font-serif text-[15vw] font-black leading-none select-none">TAIWAN</h2>
-            <div className="mt-[-4vw]">
-               <span className="text-brand-cream font-sans text-xl uppercase tracking-[1em] font-bold opacity-100">Culture Night</span>
+            <h2 className="text-brand-cream/60 font-serif text-[20vw] md:text-[15vw] font-black leading-none select-none">TAIWAN</h2>
+            <div className="mt-[-8vw] md:mt-[-4vw]">
+               <span className="text-brand-cream font-sans text-sm md:text-xl uppercase tracking-[0.5em] md:tracking-[1em] font-bold opacity-100">Culture Night</span>
             </div>
           </motion.div>
         </div>
@@ -467,16 +466,16 @@ export default function App() {
                   onClick={() => setSelectedVendor(v[lang])}
                   className="group w-full text-left border-b editorial-divider pb-6 outline-none"
                 >
-                  <div className="flex justify-between items-center">
-                    <h5 className="font-serif text-2xl group-hover:text-brand-accent transition-colors font-bold uppercase">{v[lang].name}</h5>
-                    <div className="flex items-center gap-8">
+                  <div className="flex justify-between items-center gap-4">
+                    <h5 className="font-serif text-xl md:text-2xl group-hover:text-brand-accent transition-colors font-bold uppercase flex-1">{v[lang].name}</h5>
+                    <div className="flex items-center gap-4 md:gap-8 shrink-0">
                       <img 
                         src={`${import.meta.env.BASE_URL}logos/vendors/${v[lang].id}.png`} 
                         alt="" 
-                        className="w-24 h-24 object-contain transition-all"
+                        className="w-12 h-12 md:w-24 md:h-24 object-contain transition-all"
                         onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
                       />
-                      <span className="text-[10px] uppercase font-bold tracking-widest text-brand-ink/60 group-hover:text-brand-accent transition-colors underline decoration-brand-accent decoration-2 underline-offset-4">{lang === 'en' ? 'Detail +' : '詳情 +'}</span>
+                      <span className="text-[10px] uppercase font-bold tracking-widest text-brand-ink/60 group-hover:text-brand-accent transition-colors underline decoration-brand-accent decoration-2 underline-offset-4 whitespace-nowrap">{lang === 'en' ? 'Detail +' : '詳情 +'}</span>
                     </div>
                   </div>
                 </button>
@@ -517,17 +516,17 @@ export default function App() {
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-12 items-start">
              {[
                { id: 'office', zh: '駐荷蘭台北代表處', en: 'Taipei Representative Office in the Netherlands' },
-               { id: 'moe', zh: '台灣教育部', en: 'Education Division, Ministry of Education' },
+               { id: 'moe', zh: '台灣教育部', en: 'Ministry of Education, Republic of China (Taiwan)' },
                { id: 'tba', zh: '荷蘭台灣商會', en: 'Taiwan Business Association in the Netherlands' },
                { id: 'school', zh: '荷蘭台北學校', en: 'Taipei School in the Netherlands' },
-               { id: 'typin', zh: '荷蘭台灣專業青年會', en: 'Taiwanese Junior Chamber Professionals Netherlands' }
+               { id: 'typin', zh: '荷蘭台灣專業青年協會', en: 'Association of Taiwan Young Professionals in the Netherlands' }
              ].map(sponsor => (
                <div key={sponsor.id} className="flex flex-col items-center text-center group cursor-default">
                  <div className="h-24 w-full flex items-center justify-center mb-6 transition-all duration-500 group-hover:scale-110">
                     <img 
                       src={`${import.meta.env.BASE_URL}logos/sponsors/${sponsor.id}.png`} 
                       alt={sponsor.zh}
-                      className="max-w-full max-h-full object-contain filter grayscale group-hover:grayscale-0 transition-all duration-500"
+                      className="max-w-full max-h-full object-contain transition-all duration-500"
                       onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
                     />
                  </div>
@@ -586,20 +585,20 @@ export default function App() {
       </section>
 
       {/* Footer */}
-      <footer className="flex flex-col md:flex-row items-center justify-between px-12 bg-brand-ink/95 text-brand-cream py-10 md:h-24 md:py-0 backdrop-blur-md">
-        <div className="flex items-center gap-6">
-          <img src={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/dtso.png`} alt="DTSO" className="h-12 w-12 object-contain" />
-          <div className="label-xs opacity-60">Venue: DUWO Common Room, Delft</div>
+      <footer className="flex flex-col md:flex-row items-center justify-between px-6 md:px-12 bg-brand-ink/95 text-brand-cream py-10 md:h-24 md:py-0 backdrop-blur-md">
+        <div className="flex items-center gap-4 md:gap-6 mb-8 md:mb-0">
+          <img src={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/dtso.png`} alt="DTSO" className="h-10 w-10 md:h-12 md:w-12 object-contain" />
+          <div className="text-[10px] md:label-xs opacity-60">Venue: DUWO Common Room, Delft</div>
         </div>
-        <div className="label-xs flex gap-8 mt-4 md:mt-0">
-          <a href="https://www.instagram.com/dtso_tud/?hl=en" target="_blank" rel="noopener noreferrer" className="hover:text-brand-accent transition-colors uppercase font-bold tracking-widest flex items-center gap-2">
+        <div className="flex flex-col md:flex-row gap-4 md:gap-8 items-center text-center">
+          <a href="https://www.instagram.com/dtso_tud/?hl=en" target="_blank" rel="noopener noreferrer" className="text-[10px] md:label-xs hover:text-brand-accent transition-colors uppercase font-bold tracking-widest flex items-center gap-2">
             <Instagram size={14} /> Instagram
           </a>
-          <a href="mailto:delft.taiwan.student.org@gmail.com" className="hover:text-brand-accent transition-colors uppercase font-bold tracking-widest flex items-center gap-2">
-            <Mail size={14} /> delft.taiwan.student.org@gmail.com
+          <a href="mailto:delft.taiwan.student.org@gmail.com" className="text-[10px] md:label-xs hover:text-brand-accent transition-colors uppercase font-bold tracking-widest flex items-center gap-2">
+            <Mail size={14} /> <span className="break-all">delft.taiwan.student.org@gmail.com</span>
           </a>
         </div>
-        <div className="label-xs opacity-40 mt-4 md:mt-0">© 2026 DTSO Delft Taiwan Student Organization</div>
+        <div className="text-[8px] md:label-xs opacity-40 mt-8 md:mt-0">© 2026 DTSO Delft Taiwan Student Organization</div>
       </footer>
       </div>
     </div>
