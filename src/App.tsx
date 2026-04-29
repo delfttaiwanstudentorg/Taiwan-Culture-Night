@@ -467,6 +467,8 @@ export default function App() {
               <button 
                 key={i} 
                 onClick={() => setSelectedVendor(v[lang])}
+                className="group w-full text-left border-b editorial-divider pb-4 last:border-0 outline-none"
+              >
                 <div className="flex-1 flex justify-between items-baseline">
                   <div className="flex items-center gap-4">
                     <img 
