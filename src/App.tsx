@@ -218,12 +218,12 @@ const Navbar = ({ lang, setLang }: { lang: 'en' | 'zh', setLang: (l: 'en' | 'zh'
               <a 
                 key={link.name} 
                 href={link.href} 
-                className="text-[10px] uppercase tracking-[0.2em] font-bold text-white hover:text-brand-accent transition-colors" style={{textShadow: '0 1px 4px rgba(0,0,0,0.8)'}}
+                className="text-[13px] uppercase tracking-[0.2em] font-bold text-white hover:text-brand-accent transition-colors" style={{textShadow: '0 1px 4px rgba(0,0,0,0.8)'}}
               >
                 {link.name}
               </a>
             ))}
-            <a href="#location" className="text-[10px] uppercase tracking-widest font-bold bg-brand-accent text-brand-cream px-6 py-2 hover:bg-white hover:text-brand-ink transition-all">
+            <a href="#location" className="text-[13px] uppercase tracking-widest font-bold bg-brand-accent text-brand-cream px-6 py-2 hover:bg-white hover:text-brand-ink transition-all">
               {lang === 'en' ? 'Location' : '活動地點'}
             </a>
           </div>
@@ -373,11 +373,6 @@ export default function App() {
       </AnimatePresence>
       <Navbar lang={lang} setLang={setLang} />
       <Hero lang={lang} />
-      
-      {/* Short centered divider */}
-      <div className="flex justify-center py-4 bg-brand-cream/95">
-        <div className="h-1 w-12 bg-brand-ink/20" />
-      </div>
 
       {/* About Section */}
       <section id="about" className="grid grid-cols-12 border-b editorial-divider backdrop-blur-sm bg-brand-cream/95">
@@ -419,10 +414,7 @@ export default function App() {
         </div>
       </section>
 
-      {/* Short centered divider */}
-      <div className="flex justify-center py-4 bg-brand-ink/95">
-        <div className="h-1 w-12 bg-brand-cream/20" />
-      </div>
+
 
       {/* Schedule Section */}
       <section id="schedule" className="py-32 bg-brand-ink/95 text-brand-cream overflow-hidden backdrop-blur-sm">
@@ -454,18 +446,19 @@ export default function App() {
         </div>
       </section>
 
-      {/* Short centered divider */}
-      <div className="flex justify-center py-4 bg-brand-cream/95">
-        <div className="h-1 w-12 bg-brand-ink/20" />
-      </div>
+
 
       {/* Experience Section */}
-      <section id="vendors" className="border-b editorial-divider bg-white/40 backdrop-blur-sm text-brand-ink">
+      <section id="vendors" className="border-b editorial-divider backdrop-blur-sm text-brand-ink">
         {/* Market column - Now full width */}
-        <div className="p-12 md:p-24 bg-white/60">
+        <div className="p-12 md:p-24 bg-white/90">
           <div className="container mx-auto">
-            <div className="flex justify-between items-end mb-16">
-              <h2 className="text-5xl font-serif">{lang === 'en' ? 'Main Market' : '美食市集'}</h2>
+            <div className="mb-16">
+              <SectionHeading 
+                zh={lang === 'en' ? '美食市集' : '美食市集'} 
+                en={lang === 'en' ? 'Main Market' : 'Main Market'} 
+                number="02" 
+              />
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-8">
               {VENDORS.map((v, i) => (
@@ -480,7 +473,7 @@ export default function App() {
                       <img 
                         src={`${import.meta.env.BASE_URL}logos/vendors/${v[lang].id}.png`} 
                         alt="" 
-                        className="w-16 h-16 object-contain transition-all"
+                        className="w-24 h-24 object-contain transition-all"
                         onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
                       />
                       <span className="text-[10px] uppercase font-bold tracking-widest text-brand-ink/60 group-hover:text-brand-accent transition-colors underline decoration-brand-accent decoration-2 underline-offset-4">{lang === 'en' ? 'Detail +' : '詳情 +'}</span>
@@ -493,7 +486,7 @@ export default function App() {
         </div>
 
         {/* Culture column - Now below market */}
-        <div className="p-12 md:p-24 flex flex-col bg-brand-cream/90 border-t editorial-divider">
+        <div className="p-12 md:p-24 flex flex-col bg-brand-cream/95 border-t editorial-divider">
           <div className="container mx-auto">
             <div className="flex justify-between items-end mb-16">
               <h2 className="text-5xl font-serif">{lang === 'en' ? 'Cultural Experience' : '文化體驗'}</h2>
@@ -516,13 +509,8 @@ export default function App() {
         </div>
       </section>
 
-      {/* Short centered divider */}
-      <div className="flex justify-center py-4 bg-white/40 backdrop-blur-sm">
-        <div className="h-1 w-12 bg-brand-ink/20" />
-      </div>
-
       {/* Sponsors Section */}
-      <section id="sponsors" className="py-32 bg-white/90 backdrop-blur-sm border-b editorial-divider">
+      <section id="sponsors" className="py-32 bg-white/95 backdrop-blur-sm border-b editorial-divider">
         <div className="container mx-auto px-6">
           <SectionHeading zh="贊助夥伴" en="Sponsors" number="03" />
           
@@ -552,13 +540,8 @@ export default function App() {
         </div>
       </section>
 
-      {/* Short centered divider */}
-      <div className="flex justify-center py-4 bg-white/90 backdrop-blur-sm">
-        <div className="h-1 w-12 bg-brand-ink/20" />
-      </div>
-
       {/* Location Section */}
-      <section id="location" className="py-32 bg-white/90 backdrop-blur-sm">
+      <section id="location" className="py-32 bg-brand-cream/95 backdrop-blur-sm">
         <div className="container mx-auto px-6">
           <SectionHeading zh="活動地點" en="Venue & Location" number="04" />
           
@@ -601,11 +584,6 @@ export default function App() {
           </div>
         </div>
       </section>
-
-      {/* Short centered divider */}
-      <div className="flex justify-center py-4 bg-white/90 backdrop-blur-sm">
-        <div className="h-1 w-12 bg-brand-ink/20" />
-      </div>
 
       {/* Footer */}
       <footer className="flex flex-col md:flex-row items-center justify-between px-12 bg-brand-ink/95 text-brand-cream py-10 md:h-24 md:py-0 backdrop-blur-md">
