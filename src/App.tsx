@@ -174,7 +174,7 @@ const VendorModal = ({ vendor, onClose, lang }: { vendor: Vendor, onClose: () =>
       {/* Right: Photo Space */}
       <div className="w-full md:w-2/5 bg-brand-ink/5 flex items-center justify-center border-l editorial-divider min-h-[300px]">
         <img 
-          src={`/photos/vendors/${vendor.id}.png`} 
+          src={`./photos/vendors/${vendor.id}.png`} 
           alt={vendor.name} 
           className="w-full h-full object-cover"
           onError={(e) => {
@@ -207,7 +207,7 @@ const Navbar = ({ lang, setLang }: { lang: 'en' | 'zh', setLang: (l: 'en' | 'zh'
     <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 border-b editorial-divider ${scrolled ? 'bg-brand-cream/90 backdrop-blur-md py-4' : 'bg-transparent py-8'}`}>
       <div className="px-12 flex justify-between items-center">
         <div className="flex items-center gap-4">
-          <img src="/DTSO.png" alt="DTSO" className="h-10 w-10 object-contain" />
+          <img src="./DTSO.png" alt="DTSO" className="h-10 w-10 object-contain" />
           <a href="#" className="label-xs not-italic tracking-widest">
             TAIWAN CULTURE NIGHT <span className="opacity-40 ml-2">DELFT</span>
           </a>
@@ -365,10 +365,10 @@ export default function App() {
       <div className="fixed inset-0 z-[-5] pointer-events-none overflow-hidden opacity-40">
         <div className="absolute inset-0 bg-brand-accent/5 z-0" />
         <motion.div style={{ y: bgY1 }} className="absolute top-0 left-0 w-full h-[150vh]">
-          <img src="/bg_street.jpg" alt="BG 1" className="w-full h-full object-cover grayscale contrast-125 mix-blend-multiply" />
+          <img src="./bg_street.jpg" alt="BG 1" className="w-full h-full object-cover grayscale contrast-125 mix-blend-multiply" />
         </motion.div>
         <motion.div style={{ y: bgY2 }} className="absolute bottom-[-50vh] left-0 w-full h-[150vh]">
-          <img src="/bg_lanterns.jpg" alt="BG 2" className="w-full h-full object-cover grayscale contrast-125 mix-blend-multiply" />
+          <img src="./bg_lanterns.jpg" alt="BG 2" className="w-full h-full object-cover grayscale contrast-125 mix-blend-multiply" />
         </motion.div>
       </div>
 
@@ -472,7 +472,7 @@ export default function App() {
                 {/* Vendor Logo Placeholder */}
                 <div className="w-12 h-12 bg-brand-ink/5 border editorial-divider flex items-center justify-center shrink-0 group-hover:border-brand-accent transition-colors">
                   <img 
-                    src={`/logos/vendors/${v[lang].id}.png`} 
+                    src={`./logos/vendors/${v[lang].id}.png`} 
                     alt="" 
                     className="w-full h-full object-contain p-2 grayscale group-hover:grayscale-0 transition-all"
                     onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
@@ -525,7 +525,7 @@ export default function App() {
                ].map(logo => (
                  <div key={logo.id} className="w-32 h-20 flex items-center justify-center grayscale hover:grayscale-0 transition-all opacity-60 hover:opacity-100">
                     <img 
-                      src={`/logos/sponsors/${logo.id}.png`} 
+                      src={`./logos/sponsors/${logo.id}.png`} 
                       alt={logo.name}
                       className="max-w-full max-h-full object-contain"
                       onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
@@ -595,7 +595,7 @@ export default function App() {
       {/* Footer */}
       <footer className="flex flex-col md:flex-row items-center justify-between px-12 bg-brand-ink/95 text-brand-cream py-10 md:h-24 md:py-0 backdrop-blur-md">
         <div className="flex items-center gap-6">
-          <img src="/DTSO.png" alt="DTSO" className="h-12 w-12 object-contain grayscale brightness-200" />
+          <img src="./DTSO.png" alt="DTSO" className="h-12 w-12 object-contain grayscale brightness-200" />
           <div className="label-xs opacity-60">Venue: DUWO Common Room, Delft</div>
         </div>
         <div className="label-xs flex gap-8 mt-4 md:mt-0">
