@@ -48,13 +48,13 @@ const PROGRAM = {
     { time: '16:00', title: 'Opening Ceremony', description: '開幕儀式', highlight: true },
     { time: '16:45', title: 'Market & Lucky Draw Start', description: '攤位與抽獎開始', highlight: true },
     { time: '20:50', title: 'Big Lucky Draw', description: '閉幕大抽獎', highlight: true },
-    { time: '21:00', title: 'After Party', description: 'Social & Celebration', highlight: false },
+    { time: '21:00', title: 'After Party', description: 'Social & Celebration', highlight: true },
   ],
   zh: [
     { time: '16:00', title: '開幕儀式', description: 'Opening Ceremony', highlight: true },
     { time: '16:45', title: '攤位與抽獎開始', description: 'Market & Lucky Draw Start', highlight: true },
     { time: '20:50', title: '閉幕大抽獎', description: 'Big Lucky Draw', highlight: true },
-    { time: '21:00', title: 'After Party', description: 'Social & Celebration', highlight: false },
+    { time: '21:00', title: 'After Party', description: 'Social & Celebration', highlight: true },
   ]
 };
 
@@ -107,9 +107,6 @@ const VENDORS: ({ en: Vendor, zh: Vendor })[] = [
     en: { name: 'Design Studio Samaya', type: 'Design & Craft', items: ['Taiwan Style Design Postcards', 'Cultural Creative Merch', 'Art Selection'], id: 'samaya' },
     zh: { name: 'Design Studio Samaya', type: 'Design & Craft', items: ['台味設計明信片', '文化創意週邊', '藝術選品'], id: 'samaya' }
   },
-  { 
-    en: { name: 'DTSO', type: 'Official Booth', items: ['Tote Bag', 'Postcards', 'Taiwan Beer', 'HeySong Sarsaparilla', 'Barley Black Tea', 'Tea Eggs', 'Taiwanese Snack Gift Pack'], id: 'dtso' },
-    zh: { name: 'DTSO 學生會', type: 'Official Booth', items: ['帆布袋', '明信片', '台灣啤酒', '黑松沙士', '麥香紅茶', '茶葉蛋', '台灣零食禮包'], id: 'dtso' }
   },
 ];
 
@@ -208,7 +205,7 @@ const Navbar = ({ lang, setLang }: { lang: 'en' | 'zh', setLang: (l: 'en' | 'zh'
       <div className="px-12 flex justify-between items-center">
         {/* Logo & Title Group */}
         <div className="flex items-center gap-6">
-          <img src={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/dtso.png`} alt="DTSO" className="h-20 w-20 object-contain brightness-0 invert" />
+          <img src={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/dtso.png`} alt="DTSO" className="h-20 w-20 object-contain" />
           <a href="#" className="font-serif text-3xl tracking-widest text-white drop-shadow-lg not-italic font-medium">
             TAIWAN CULTURE NIGHT <span className="opacity-60 ml-2 font-sans text-xs align-middle">DELFT</span>
           </a>
@@ -279,7 +276,7 @@ const Hero = ({ lang }: { lang: 'en' | 'zh' }) => {
       <div className="absolute top-0 left-0 w-full h-40 bg-gradient-to-b from-black/60 to-transparent z-40 pointer-events-none" />
 
       {/* Left Column: Title & Intro */}
-      <div className="col-span-12 lg:col-span-5 p-12 border-r border-white/10 flex flex-col justify-center pt-32 bg-brand-ink/85 text-brand-cream">
+      <div className="col-span-12 lg:col-span-5 p-12 border-r border-white/10 flex flex-col justify-center pt-32 bg-brand-ink/40 backdrop-blur-md text-brand-cream">
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
@@ -323,9 +320,9 @@ const Hero = ({ lang }: { lang: 'en' | 'zh' }) => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.5 }}
           >
-            <h2 className="text-brand-cream/20 font-serif text-[15vw] font-black leading-none select-none">TAIWAN</h2>
+            <h2 className="text-brand-cream/10 font-serif text-[15vw] font-black leading-none select-none">TAIWAN</h2>
             <div className="mt-[-5vw]">
-               <span className="text-brand-cream font-sans text-xs uppercase tracking-[1em] opacity-80">Culture Night</span>
+               <span className="text-brand-cream font-sans text-xs uppercase tracking-[1em] opacity-30">Culture Night</span>
             </div>
           </motion.div>
         </div>
@@ -361,7 +358,7 @@ export default function App() {
       <div className="fixed inset-0 z-[-5] pointer-events-none overflow-hidden opacity-85">
         <div className="absolute inset-0 bg-brand-accent/5 z-0" />
         <motion.div style={{ y: bgY1 }} className="absolute top-0 left-0 w-full h-[150vh]">
-          <img src={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/bg-street.png`} alt="BG 1" className="w-full h-full object-cover" />
+          <img src={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/bg-lanterns.png`} alt="BG 1" className="w-full h-full object-cover" />
         </motion.div>
         <motion.div style={{ y: bgY2 }} className="absolute bottom-[-50vh] left-0 w-full h-[150vh]">
           <img src={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/bg-lanterns.png`} alt="BG 2" className="w-full h-full object-cover" />
@@ -452,54 +449,58 @@ export default function App() {
       </section>
 
       {/* Experience Section */}
-      <section id="vendors" className="grid grid-cols-12 border-b editorial-divider bg-white/40 backdrop-blur-sm text-brand-ink">
-        {/* Market column */}
-        <div className="col-span-12 lg:col-span-5 p-12 border-r editorial-divider bg-white/60">
-          <div className="flex justify-between items-end mb-12">
-            <h2 className="text-4xl font-serif">{lang === 'en' ? 'Main Market' : '美食市集'}</h2>
-          </div>
-          <div className="space-y-4">
-            {VENDORS.map((v, i) => (
-              <button 
-                key={i} 
-                onClick={() => setSelectedVendor(v[lang])}
-                className="group w-full text-left border-b editorial-divider pb-4 last:border-0 outline-none"
-              >
-                <div className="flex-1 flex justify-between items-baseline">
-                  <h5 className="font-serif text-xl group-hover:text-brand-accent transition-colors font-bold uppercase">{v[lang].name}</h5>
-                  <div className="flex items-center gap-4">
-                    <img 
-                      src={`${import.meta.env.BASE_URL}logos/vendors/${v[lang].id}.png`} 
-                      alt="" 
-                      className="w-10 h-10 object-contain transition-all"
-                      onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
-                    />
+      <section id="vendors" className="border-b editorial-divider bg-white/40 backdrop-blur-sm text-brand-ink">
+        {/* Market column - Now full width */}
+        <div className="p-12 md:p-24 bg-white/60">
+          <div className="container mx-auto">
+            <div className="flex justify-between items-end mb-16">
+              <h2 className="text-5xl font-serif">{lang === 'en' ? 'Main Market' : '美食市集'}</h2>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-8">
+              {VENDORS.map((v, i) => (
+                <button 
+                  key={i} 
+                  onClick={() => setSelectedVendor(v[lang])}
+                  className="group w-full text-left border-b editorial-divider pb-6 outline-none"
+                >
+                  <div className="flex justify-between items-center">
+                    <div className="flex items-center gap-8">
+                      <img 
+                        src={`${import.meta.env.BASE_URL}logos/vendors/${v[lang].id}.png`} 
+                        alt="" 
+                        className="w-16 h-16 object-contain transition-all"
+                        onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
+                      />
+                      <h5 className="font-serif text-2xl group-hover:text-brand-accent transition-colors font-bold uppercase">{v[lang].name}</h5>
+                    </div>
                     <span className="text-[10px] uppercase font-bold tracking-widest opacity-30 group-hover:opacity-100 transition-opacity underline decoration-brand-accent decoration-2 underline-offset-4">{lang === 'en' ? 'Detail +' : '詳情 +'}</span>
                   </div>
-                </div>
-              </button>
-            ))}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
 
-        {/* Culture column */}
-        <div className="col-span-12 lg:col-span-7 p-12 flex flex-col bg-brand-cream/40">
-          <div className="flex justify-between items-end mb-12">
-            <h2 className="text-4xl font-serif">{lang === 'en' ? 'Cultural Experience' : '文化體驗'}</h2>
-          </div>
-          <div className="flex flex-col space-y-12">
-            {GAMES[lang].map((game, i) => (
-              <div key={i} className="flex gap-10 items-start group">
-                <div className="w-16 h-16 bg-brand-ink/5 flex items-center justify-center font-display text-lg font-bold opacity-30 group-hover:bg-brand-accent group-hover:text-white group-hover:opacity-100 transition-all shrink-0">
-                  0{i + 1}
+        {/* Culture column - Now below market */}
+        <div className="p-12 md:p-24 flex flex-col bg-brand-cream/40 border-t editorial-divider">
+          <div className="container mx-auto">
+            <div className="flex justify-between items-end mb-16">
+              <h2 className="text-5xl font-serif">{lang === 'en' ? 'Cultural Experience' : '文化體驗'}</h2>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+              {GAMES[lang].map((game, i) => (
+                <div key={i} className="flex flex-col gap-6 group">
+                  <div className="w-12 h-12 bg-brand-ink/5 flex items-center justify-center font-display text-base font-bold opacity-30 group-hover:bg-brand-accent group-hover:text-white group-hover:opacity-100 transition-all shrink-0">
+                    0{i + 1}
+                  </div>
+                  <div>
+                    <h5 className="font-serif text-3xl leading-tight mb-2 font-bold group-hover:text-brand-accent transition-colors">{game.name}</h5>
+                    <p className="text-xs uppercase tracking-widest text-brand-accent font-bold mb-4">{game.location}</p>
+                    <p className="text-sm opacity-60 font-light leading-relaxed max-w-sm">{game.description}</p>
+                  </div>
                 </div>
-                <div>
-                  <h5 className="font-serif text-3xl leading-tight mb-2 font-bold group-hover:text-brand-accent transition-colors">{game.name}</h5>
-                  <p className="text-xs uppercase tracking-widest text-brand-accent font-bold mb-4">{game.location}</p>
-                  <p className="text-sm opacity-60 font-light leading-relaxed max-w-lg">{game.description}</p>
-                </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -583,14 +584,14 @@ export default function App() {
       {/* Footer */}
       <footer className="flex flex-col md:flex-row items-center justify-between px-12 bg-brand-ink/95 text-brand-cream py-10 md:h-24 md:py-0 backdrop-blur-md">
         <div className="flex items-center gap-6">
-          <img src={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/dtso.png`} alt="DTSO" className="h-12 w-12 object-contain brightness-0 invert" />
+          <img src={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/dtso.png`} alt="DTSO" className="h-12 w-12 object-contain" />
           <div className="label-xs opacity-60">Venue: DUWO Common Room, Delft</div>
         </div>
         <div className="label-xs flex gap-8 mt-4 md:mt-0">
-          <a href="https://www.instagram.com/dtso_delft/" target="_blank" rel="noopener noreferrer" className="hover:text-brand-accent transition-colors uppercase font-bold tracking-widest flex items-center gap-2">
+          <a href="https://www.instagram.com/dtso_tud/?hl=en" target="_blank" rel="noopener noreferrer" className="hover:text-brand-accent transition-colors uppercase font-bold tracking-widest flex items-center gap-2">
             <Instagram size={14} /> Instagram
           </a>
-          <a href="mailto:dtso.delft@gmail.com" className="hover:text-brand-accent transition-colors uppercase font-bold tracking-widest flex items-center gap-2">
+          <a href="mailto:delft.taiwan.student.org@gmail.com" className="hover:text-brand-accent transition-colors uppercase font-bold tracking-widest flex items-center gap-2">
             <Mail size={14} /> Email
           </a>
         </div>
