@@ -319,9 +319,9 @@ const Hero = ({ lang }: { lang: 'en' | 'zh' }) => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.5 }}
           >
-            <h2 className="text-brand-cream/30 font-serif text-[15vw] font-black leading-none select-none">TAIWAN</h2>
+            <h2 className="text-brand-cream/60 font-serif text-[15vw] font-black leading-none select-none">TAIWAN</h2>
             <div className="mt-[-5vw]">
-               <span className="text-brand-cream font-sans text-xs uppercase tracking-[1em] opacity-60">Culture Night</span>
+               <span className="text-brand-cream font-sans text-xs uppercase tracking-[1em] opacity-90">Culture Night</span>
             </div>
           </motion.div>
         </div>
@@ -373,6 +373,11 @@ export default function App() {
       </AnimatePresence>
       <Navbar lang={lang} setLang={setLang} />
       <Hero lang={lang} />
+      
+      {/* Short centered divider */}
+      <div className="flex justify-center py-4 bg-brand-cream/95">
+        <div className="h-1 w-12 bg-brand-ink/20" />
+      </div>
 
       {/* About Section */}
       <section id="about" className="grid grid-cols-12 border-b editorial-divider backdrop-blur-sm bg-brand-cream/95">
@@ -414,6 +419,11 @@ export default function App() {
         </div>
       </section>
 
+      {/* Short centered divider */}
+      <div className="flex justify-center py-4 bg-brand-ink/95">
+        <div className="h-1 w-12 bg-brand-cream/20" />
+      </div>
+
       {/* Schedule Section */}
       <section id="schedule" className="py-32 bg-brand-ink/95 text-brand-cream overflow-hidden backdrop-blur-sm">
         <div className="container mx-auto px-6">
@@ -429,11 +439,11 @@ export default function App() {
                 className={`flex flex-col md:flex-row items-start md:items-center py-8 border-b border-brand-cream/10 group ${item.highlight ? 'bg-brand-cream/5 -mx-6 px-6' : ''}`}
               >
                 <div className="w-32 mb-2 md:mb-0">
-                  <span className="font-display text-2xl font-light text-brand-accent/60 group-hover:text-brand-accent transition-colors">{item.time}</span>
+                  <span className="font-display text-3xl font-light text-brand-accent/60 group-hover:text-brand-accent transition-colors">{item.time}</span>
                 </div>
                 <div className="flex-1">
-                  <h4 className={`text-xl font-serif ${item.highlight ? 'text-brand-accent' : ''}`}>{item.title}</h4>
-                  {item.description && <p className="text-sm opacity-60 font-light mt-1 uppercase tracking-widest">{item.description}</p>}
+                  <h4 className={`text-3xl font-serif ${item.highlight ? 'text-brand-accent' : ''}`}>{item.title}</h4>
+                  {item.description && <p className="text-base opacity-60 font-light mt-1 uppercase tracking-widest">{item.description}</p>}
                 </div>
                 <div className="hidden md:block">
                   <ChevronRight size={20} className="opacity-0 group-hover:opacity-100 transform translate-x-[-10px] group-hover:translate-x-0 transition-all text-brand-accent" />
@@ -443,6 +453,11 @@ export default function App() {
           </div>
         </div>
       </section>
+
+      {/* Short centered divider */}
+      <div className="flex justify-center py-4 bg-brand-cream/95">
+        <div className="h-1 w-12 bg-brand-ink/20" />
+      </div>
 
       {/* Experience Section */}
       <section id="vendors" className="border-b editorial-divider bg-white/40 backdrop-blur-sm text-brand-ink">
@@ -501,6 +516,11 @@ export default function App() {
         </div>
       </section>
 
+      {/* Short centered divider */}
+      <div className="flex justify-center py-4 bg-white/40 backdrop-blur-sm">
+        <div className="h-1 w-12 bg-brand-ink/20" />
+      </div>
+
       {/* Sponsors Section */}
       <section id="sponsors" className="py-32 bg-white/90 backdrop-blur-sm border-b editorial-divider">
         <div className="container mx-auto px-6">
@@ -531,6 +551,11 @@ export default function App() {
           </div>
         </div>
       </section>
+
+      {/* Short centered divider */}
+      <div className="flex justify-center py-4 bg-white/90 backdrop-blur-sm">
+        <div className="h-1 w-12 bg-brand-ink/20" />
+      </div>
 
       {/* Location Section */}
       <section id="location" className="py-32 bg-white/90 backdrop-blur-sm">
@@ -577,6 +602,11 @@ export default function App() {
         </div>
       </section>
 
+      {/* Short centered divider */}
+      <div className="flex justify-center py-4 bg-white/90 backdrop-blur-sm">
+        <div className="h-1 w-12 bg-brand-ink/20" />
+      </div>
+
       {/* Footer */}
       <footer className="flex flex-col md:flex-row items-center justify-between px-12 bg-brand-ink/95 text-brand-cream py-10 md:h-24 md:py-0 backdrop-blur-md">
         <div className="flex items-center gap-6">
@@ -588,7 +618,7 @@ export default function App() {
             <Instagram size={14} /> Instagram
           </a>
           <a href="mailto:delft.taiwan.student.org@gmail.com" className="hover:text-brand-accent transition-colors uppercase font-bold tracking-widest flex items-center gap-2">
-            <Mail size={14} /> Email
+            <Mail size={14} /> delft.taiwan.student.org@gmail.com
           </a>
         </div>
         <div className="label-xs opacity-40 mt-4 md:mt-0">© 2026 DTSO Delft Taiwan Student Organization</div>
