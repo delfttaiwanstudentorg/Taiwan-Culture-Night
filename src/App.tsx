@@ -521,9 +521,9 @@ export default function App() {
               <div className="h-1 w-12 bg-brand-accent mt-4" />
             </div>
             
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
               {/* Left Column: Map Image */}
-              <div className="w-full bg-brand-ink/5 overflow-hidden backdrop-blur-[2px] border border-brand-ink/10 group cursor-pointer">
+              <div className="lg:col-span-5 w-full bg-brand-ink/5 overflow-hidden backdrop-blur-[2px] border border-brand-ink/10 group cursor-pointer">
                 <img 
                   src={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/masterplan.png`} 
                   alt="Event Map / Masterplan" 
@@ -532,7 +532,7 @@ export default function App() {
               </div>
 
               {/* Right Column: Information/Legend */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-12 text-brand-ink">
+              <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-12 text-brand-ink">
                 {/* Vendors Column */}
                 <div>
                   <h3 className="font-serif text-2xl font-bold mb-6 text-brand-accent border-b border-brand-accent/20 pb-2 flex items-center justify-between">
@@ -541,24 +541,28 @@ export default function App() {
                   </h3>
                   <ol className="space-y-4 text-base font-light font-sans text-brand-ink/80 leading-relaxed">
                     {[
-                      { num: "1", name: lang === 'en' ? 'Souvenir' : '學生會紀念品' },
-                      { num: "2", name: 'CONTACT TAIWAN' },
-                      { num: "3", name: 'Design Studio Samaya' },
-                      { num: "4", name: lang === 'en' ? 'Little Book Project' : '小冊選書 Little Book' },
-                      { num: "5", name: 'Machi Machi' },
-                      { num: "6", name: 'Ms. Brenda' },
-                      { num: "7", name: 'Veggie Garden' },
-                      { num: "8", name: "Mei's Kitchen" },
-                      { num: "9", name: "K's FAN" },
-                      { num: "10", name: 'Cha Bar — 呷吧' },
-                      { num: "11", name: 'Chow it out' },
-                      { num: "12", name: '9ijs' },
-                      { num: "13", name: lang === 'en' ? 'V-Kitchen' : 'V 記美食' },
-                      { num: "14", name: 'Bao & Bowl' }
+                      { num: "1", name: lang === 'en' ? 'Souvenir' : '學生會紀念品', id: '' },
+                      { num: "2", name: 'CONTACT TAIWAN', id: '' },
+                      { num: "3", name: 'Design Studio Samaya', id: 'samaya' },
+                      { num: "4", name: lang === 'en' ? 'Little Book Project' : '小冊選書 Little Book', id: 'little_book' },
+                      { num: "5", name: 'Machi Machi', id: 'machi_machi' },
+                      { num: "6", name: 'Ms. Brenda', id: 'ms_brenda' },
+                      { num: "7", name: 'Veggie Garden', id: 'veggie_garden' },
+                      { num: "8", name: "Mei's Kitchen", id: 'meis_kitchen' },
+                      { num: "9", name: "K's FAN", id: 'ks_fan' },
+                      { num: "10", name: 'Cha Bar — 呷吧', id: 'cha_bar' },
+                      { num: "11", name: 'Chow it out', id: 'chow_it_out' },
+                      { num: "12", name: '9ijs', id: '9ijs' },
+                      { num: "13", name: lang === 'en' ? 'V-Kitchen' : 'V 記美食', id: 'v_kitchen' },
+                      { num: "14", name: 'Bao & Bowl', id: 'bao_bowl' }
                     ].map(v => (
-                      <li key={v.num} className="flex items-start gap-3 group border-b border-brand-ink/5 pb-2">
+                      <li 
+                        key={v.num} 
+                        onClick={() => { if (v.id) { const found = VENDORS.find(ven => ven.en.id === v.id); if (found) setSelectedVendor(found[lang]); } }}
+                        className={`flex items-start gap-3 group border-b border-brand-ink/5 pb-2 ${v.id ? 'cursor-pointer hover:bg-brand-accent/5 px-2 -mx-2 transition-colors' : ''}`}
+                      >
                         <span className="font-serif font-bold text-brand-accent min-w-[24px] text-lg">{v.num}</span>
-                        <span className="group-hover:text-brand-accent transition-colors flex-1">{v.name}</span>
+                        <span className={`flex-1 transition-colors ${v.id ? 'group-hover:text-brand-accent' : ''}`}>{v.name}</span>
                       </li>
                     ))}
                   </ol>
