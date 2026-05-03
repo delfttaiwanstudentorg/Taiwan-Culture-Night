@@ -511,6 +511,87 @@ export default function App() {
             </div>
           </div>
         </div>
+
+        {/* Masterplan Map column */}
+        <div className="p-12 md:p-24 bg-white/75 md:bg-white/80 border-t border-brand-ink/10">
+          <div className="container mx-auto">
+            <div className="flex flex-col mb-16 relative">
+              <h2 className="font-serif text-4xl md:text-5xl font-bold">{lang === 'en' ? 'Event Map' : '活動地圖'}</h2>
+              <span className="font-sans text-[11px] uppercase tracking-[0.4em] text-brand-accent mt-2">Masterplan</span>
+              <div className="h-1 w-12 bg-brand-accent mt-4" />
+            </div>
+            
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+              {/* Left Column: Map Image */}
+              <div className="w-full bg-brand-ink/5 overflow-hidden backdrop-blur-[2px] border border-brand-ink/10 group cursor-pointer">
+                <img 
+                  src={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/masterplan.png`} 
+                  alt="Event Map / Masterplan" 
+                  className="w-full h-auto object-cover grayscale contrast-125 group-hover:grayscale-0 group-hover:contrast-100 transition-all duration-700 select-none pointer-events-none" 
+                />
+              </div>
+
+              {/* Right Column: Information/Legend */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-12 text-brand-ink">
+                {/* Vendors Column */}
+                <div>
+                  <h3 className="font-serif text-2xl font-bold mb-6 text-brand-accent border-b border-brand-accent/20 pb-2 flex items-center justify-between">
+                    <span>{lang === 'en' ? 'Vendors' : '攤販'}</span>
+                    <span className="text-xs font-sans font-light opacity-50 tracking-wider">1 — 14</span>
+                  </h3>
+                  <ol className="space-y-4 text-base font-light font-sans text-brand-ink/80 leading-relaxed">
+                    {[
+                      { num: "1", name: lang === 'en' ? 'Souvenir' : '學生會紀念品' },
+                      { num: "2", name: 'CONTACT TAIWAN' },
+                      { num: "3", name: 'Design Studio Samaya' },
+                      { num: "4", name: lang === 'en' ? 'Little Book Project' : '小冊選書 Little Book' },
+                      { num: "5", name: 'Machi Machi' },
+                      { num: "6", name: 'Ms. Brenda' },
+                      { num: "7", name: 'Veggie Garden' },
+                      { num: "8", name: "Mei's Kitchen" },
+                      { num: "9", name: "K's FAN" },
+                      { num: "10", name: 'Cha Bar — 呷吧' },
+                      { num: "11", name: 'Chow it out' },
+                      { num: "12", name: '9ijs' },
+                      { num: "13", name: lang === 'en' ? 'V-Kitchen' : 'V 記美食' },
+                      { num: "14", name: 'Bao & Bowl' }
+                    ].map(v => (
+                      <li key={v.num} className="flex items-start gap-3 group border-b border-brand-ink/5 pb-2">
+                        <span className="font-serif font-bold text-brand-accent min-w-[24px] text-lg">{v.num}</span>
+                        <span className="group-hover:text-brand-accent transition-colors flex-1">{v.name}</span>
+                      </li>
+                    ))}
+                  </ol>
+                </div>
+
+                {/* Game Zone Column */}
+                <div>
+                  <h3 className="font-serif text-2xl font-bold mb-6 text-brand-accent border-b border-brand-accent/20 pb-2 flex items-center justify-between">
+                    <span>{lang === 'en' ? 'Game Zone' : '闖關區'}</span>
+                    <span className="text-xs font-sans font-light opacity-50 tracking-wider">A — H</span>
+                  </h3>
+                  <ul className="space-y-4 text-base font-light font-sans text-brand-ink/80 leading-relaxed">
+                    {[
+                      { letter: "A", name: lang === 'en' ? 'Culture Match' : '文化黑白配' },
+                      { letter: "B", name: lang === 'en' ? 'Calligraphy' : '書法體驗' },
+                      { letter: "C", name: lang === 'en' ? 'Wishing Wall' : '許願牆' },
+                      { letter: "D", name: lang === 'en' ? 'Calligraphy & Writing' : '寫字區' },
+                      { letter: "E", name: lang === 'en' ? 'Taiwan Photo Corner' : '台灣攝影角' },
+                      { letter: "F", name: lang === 'en' ? 'Bottle Fishing' : '撈酒瓶' },
+                      { letter: "G", name: lang === 'en' ? 'Sandbag Toss' : '沙包丟鋁罐' },
+                      { letter: "H", name: lang === 'en' ? 'Ring Toss' : '套圈圈' }
+                    ].map(g => (
+                      <li key={g.letter} className="flex items-start gap-3 group border-b border-brand-ink/5 pb-2">
+                        <span className="font-serif font-bold text-brand-accent min-w-[24px] text-lg">{g.letter}</span>
+                        <span className="group-hover:text-brand-accent transition-colors flex-1">{g.name}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* Sponsors Section */}
@@ -549,10 +630,11 @@ export default function App() {
         <div className="container mx-auto px-6">
           <SectionHeading zh="活動地點" en="Venue & Location" number="04" />
           
+          {/* Row 1: DUWO Venue info & Google Map */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
             <div className="space-y-8">
               {/* DUWO Common Room Card */}
-              <div className="bg-brand-cream/80 backdrop-blur-[2px] p-12 space-y-6 text-brand-ink border border-brand-ink/10">
+              <div className="bg-brand-cream/80 backdrop-blur-[2px] p-12 space-y-6 text-brand-ink border border-brand-ink/10 h-full flex flex-col justify-between">
                 <div>
                   <h4 className="font-serif text-2xl mb-2">DUWO Common Room</h4>
                   <p className="opacity-70 font-light italic text-sm">Professor Schermerhornstraat 4, 2628 PZ Delft</p>
@@ -572,53 +654,56 @@ export default function App() {
                   href="https://maps.app.goo.gl/EtGejgC8LLHAf4439" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="inline-flex items-center space-x-3 bg-brand-ink text-brand-cream px-8 py-4 text-xs font-bold uppercase tracking-widest hover:bg-brand-accent transition-colors"
+                  className="inline-flex items-center space-x-3 bg-brand-ink text-brand-cream px-8 py-4 text-xs font-bold uppercase tracking-widest hover:bg-brand-accent transition-colors mt-auto"
                 >
                   <MapPin size={16} />
                   <span>{lang === 'en' ? 'Open in Google Maps' : '在 Google 地圖中開啟'}</span>
                 </a>
               </div>
-
-              {/* Car Park Info Card */}
-              <div className="bg-brand-cream/80 backdrop-blur-[2px] p-12 space-y-6 text-brand-ink border border-brand-ink/10">
-                <div>
-                  <h4 className="font-serif text-2xl mb-2">{lang === 'en' ? 'Car Park' : '停車資訊'}</h4>
-                  <p className="opacity-70 font-light italic text-sm">
-                    {lang === 'en' ? 'There are some parking spaces nearby:' : '會場周邊提供以下路段停車位：'}
-                  </p>
-                </div>
-                <div className="h-px w-full bg-brand-ink/10" />
-                <ul className="list-disc list-inside space-y-2 text-sm font-light text-brand-ink/80 leading-relaxed">
-                  <li>Mijnbouwstraat</li>
-                  <li>Piet Heinstraat</li>
-                  <li>Cornelis Trompstraat</li>
-                  <li>Michiel de Ruyterweg</li>
-                </ul>
-                <div className="pt-4">
-                  <div className="w-full bg-brand-ink/5 overflow-hidden backdrop-blur-[2px] border border-brand-ink/10 group">
-                    <img 
-                      src={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/carr-park.png`} 
-                      alt="Parking Map" 
-                      className="w-full h-auto object-cover grayscale contrast-125 group-hover:grayscale-0 group-hover:contrast-100 transition-all duration-700 select-none pointer-events-none" 
-                    />
-                  </div>
-                </div>
-              </div>
             </div>
             
-            <div className="flex flex-col gap-8">
+            <div className="flex flex-col gap-8 h-full">
               {/* Google Maps iframe */}
-              <div className="flex flex-col gap-3">
+              <div className="flex flex-col gap-3 h-full">
                 <span className="text-xs font-bold uppercase tracking-widest text-brand-accent flex items-center gap-2">
                   <MapPin size={14} /> {lang === 'en' ? 'Google Maps' : 'Google 地圖'}
                 </span>
-                <div className="aspect-video w-full grayscale contrast-125 opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-700 bg-brand-ink/5 overflow-hidden backdrop-blur-[2px] border border-brand-ink/10">
+                <div className="aspect-video w-full grayscale contrast-125 opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-700 bg-brand-ink/5 overflow-hidden backdrop-blur-[2px] border border-brand-ink/10 flex-1">
                    <iframe 
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2454.862343213192!2d4.3734000769399895!3d51.998000474681765!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c5b5be13c2b44b%3A0x8ac7c5b1307b2756!2sProfessor%20Schermerhornstraat%204%2C%202628%20PZ%20Delft!5e0!3m2!1sen!2snl!4v1714345000000!5m2!1sen!2snl" 
                     width="100%" height="100%" style={{ border: 0 }} allowFullScreen={true} loading="lazy" referrerPolicy="no-referrer-when-downgrade"
                    />
                 </div>
               </div>
+            </div>
+          </div>
+
+          {/* Row 2: Car Park Map & Car Park Info */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start mt-16">
+            {/* Left Column: Map Image */}
+            <div className="w-full bg-brand-ink/5 overflow-hidden backdrop-blur-[2px] border border-brand-ink/10 group">
+              <img 
+                src={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/carr-park.png`} 
+                alt="Parking Map" 
+                className="w-full h-auto object-cover grayscale contrast-125 group-hover:grayscale-0 group-hover:contrast-100 transition-all duration-700 select-none pointer-events-none" 
+              />
+            </div>
+
+            {/* Right Column: Text Info */}
+            <div className="bg-brand-cream/80 backdrop-blur-[2px] p-12 space-y-6 text-brand-ink border border-brand-ink/10 h-full flex flex-col justify-center">
+              <div>
+                <h4 className="font-serif text-3xl mb-2">{lang === 'en' ? 'Car Park' : '停車資訊'}</h4>
+                <p className="opacity-70 font-light italic text-base">
+                  {lang === 'en' ? 'There are some parking spaces nearby:' : '會場周邊提供以下路段停車位：'}
+                </p>
+              </div>
+              <div className="h-px w-full bg-brand-ink/10" />
+              <ul className="list-disc list-inside space-y-3 text-base font-light text-brand-ink/80 leading-relaxed">
+                <li>Mijnbouwstraat</li>
+                <li>Piet Heinstraat</li>
+                <li>Cornelis Trompstraat</li>
+                <li>Michiel de Ruyterweg</li>
+              </ul>
             </div>
           </div>
         </div>
