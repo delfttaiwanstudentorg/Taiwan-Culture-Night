@@ -551,7 +551,8 @@ export default function App() {
           
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
             <div className="space-y-8">
-              <div className="bg-brand-cream/80 backdrop-blur-[2px] p-12 space-y-6 text-brand-ink">
+              {/* DUWO Common Room Card */}
+              <div className="bg-brand-cream/80 backdrop-blur-[2px] p-12 space-y-6 text-brand-ink border border-brand-ink/10">
                 <div>
                   <h4 className="font-serif text-2xl mb-2">DUWO Common Room</h4>
                   <p className="opacity-70 font-light italic text-sm">Professor Schermerhornstraat 4, 2628 PZ Delft</p>
@@ -577,6 +578,32 @@ export default function App() {
                   <span>{lang === 'en' ? 'Open in Google Maps' : '在 Google 地圖中開啟'}</span>
                 </a>
               </div>
+
+              {/* Car Park Info Card */}
+              <div className="bg-brand-cream/80 backdrop-blur-[2px] p-12 space-y-6 text-brand-ink border border-brand-ink/10">
+                <div>
+                  <h4 className="font-serif text-2xl mb-2">{lang === 'en' ? 'Car Park' : '停車資訊'}</h4>
+                  <p className="opacity-70 font-light italic text-sm">
+                    {lang === 'en' ? 'There are some parking spaces nearby:' : '會場周邊提供以下路段停車位：'}
+                  </p>
+                </div>
+                <div className="h-px w-full bg-brand-ink/10" />
+                <ul className="list-disc list-inside space-y-2 text-sm font-light text-brand-ink/80 leading-relaxed">
+                  <li>Mijnbouwstraat</li>
+                  <li>Piet Heinstraat</li>
+                  <li>Cornelis Trompstraat</li>
+                  <li>Michiel de Ruyterweg</li>
+                </ul>
+                <div className="pt-4">
+                  <div className="w-full bg-brand-ink/5 overflow-hidden backdrop-blur-[2px] border border-brand-ink/10 group">
+                    <img 
+                      src={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/carr-park.png`} 
+                      alt="Parking Map" 
+                      className="w-full h-auto object-cover grayscale contrast-125 group-hover:grayscale-0 group-hover:contrast-100 transition-all duration-700 select-none pointer-events-none" 
+                    />
+                  </div>
+                </div>
+              </div>
             </div>
             
             <div className="flex flex-col gap-8">
@@ -590,20 +617,6 @@ export default function App() {
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2454.862343213192!2d4.3734000769399895!3d51.998000474681765!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c5b5be13c2b44b%3A0x8ac7c5b1307b2756!2sProfessor%20Schermerhornstraat%204%2C%202628%20PZ%20Delft!5e0!3m2!1sen!2snl!4v1714345000000!5m2!1sen!2snl" 
                     width="100%" height="100%" style={{ border: 0 }} allowFullScreen={true} loading="lazy" referrerPolicy="no-referrer-when-downgrade"
                    />
-                </div>
-              </div>
-
-              {/* Parking Map */}
-              <div className="flex flex-col gap-3">
-                <span className="text-xs font-bold uppercase tracking-widest text-brand-accent flex items-center gap-2">
-                  <ExternalLink size={14} /> {lang === 'en' ? 'Parking Map' : '停車地圖'}
-                </span>
-                <div className="w-full bg-brand-ink/5 overflow-hidden backdrop-blur-[2px] border border-brand-ink/10 group">
-                  <img 
-                    src={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/carr-park.png`} 
-                    alt="Parking Map" 
-                    className="w-full h-auto object-cover grayscale contrast-125 group-hover:grayscale-0 group-hover:contrast-100 transition-all duration-700 select-none pointer-events-none" 
-                  />
                 </div>
               </div>
             </div>
