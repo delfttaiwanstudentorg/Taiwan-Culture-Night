@@ -17,7 +17,8 @@ import {
   X,
   ExternalLink,
   Instagram,
-  Mail
+  Mail,
+  Facebook
 } from 'lucide-react';
 
 // --- Types ---
@@ -198,6 +199,7 @@ const Navbar = ({ lang, setLang }: { lang: 'en' | 'zh', setLang: (l: 'en' | 'zh'
     { name: lang === 'en' ? 'Vendors' : '攤販遊戲', href: '#vendors' },
     { name: lang === 'en' ? 'Sponsors' : '贊助夥伴', href: '#sponsors' },
     { name: lang === 'en' ? 'Location' : '活動地點', href: '#location' },
+    { name: lang === 'en' ? 'Contact' : '聯絡我們', href: '#contact' },
   ];
 
   return (
@@ -279,17 +281,11 @@ const Hero = ({ lang }: { lang: 'en' | 'zh' }) => {
           transition={{ duration: 1 }}
         >
           <span className="label-xs text-brand-accent mb-6 block uppercase tracking-[0.3em] font-bold">Delft / 2026</span>
-          <h1 className="text-6xl md:text-8xl lg:text-[120px] leading-[0.9] font-serif font-black mb-10 -ml-1 not-italic">
+          <h1 className="text-6xl md:text-8xl lg:text-[120px] leading-[0.9] font-serif font-black mb-8 -ml-1 not-italic">
             台灣<br />之夜
           </h1>
-          <p className="text-xl leading-[1.8] text-brand-cream/80 font-light max-w-sm mb-12">
-            {lang === 'en' 
-              ? 'A curated evening celebrating the vibrant heritage and modern innovation of Taiwan. Experience authentic flavors, soundscapes, and design in the heart of Delft.'
-              : '一場集結台灣豐富文化與現代創意的盛會。在台夫特市中心，與我們一同體驗最在地的人情味、美食與設計。'
-            }
-          </p>
           
-          <div className="flex flex-col space-y-6 pt-4">
+          <div className="flex flex-col space-y-4 mb-10">
              <div className="flex items-center space-x-3 text-sm uppercase tracking-[0.2em] font-bold text-brand-accent">
                <Calendar size={18} />
                <span>{lang === 'en' ? 'Saturday, May 09, 2026' : '2026年5月9日 (六)'}</span>
@@ -298,7 +294,18 @@ const Hero = ({ lang }: { lang: 'en' | 'zh' }) => {
                <Clock size={18} />
                <span>16:00 – 21:00</span>
              </div>
+             <div className="flex items-start space-x-3 text-sm uppercase tracking-[0.2em] font-bold text-brand-accent">
+               <MapPin size={18} className="mt-0.5 shrink-0" />
+               <span className="leading-snug">Professor Schermerhornstraat 4, 2628 PZ Delft</span>
+             </div>
           </div>
+
+          <p className="text-xl leading-[1.8] text-brand-cream/80 font-light max-w-sm">
+            {lang === 'en' 
+              ? 'A free curated evening celebrating the vibrant heritage and modern innovation of Taiwan. Experience authentic flavors, soundscapes, and design in the heart of Delft.'
+              : '一場免費集結台灣豐富文化與現代創意的盛會。在台夫特市中心，與我們一同體驗最在地的人情味、美食與設計。'
+            }
+          </p>
         </motion.div>
       </div>
 
@@ -542,7 +549,7 @@ export default function App() {
         <div className="container mx-auto px-6">
           <SectionHeading zh="活動地點" en="Venue & Location" number="04" />
           
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
             <div className="space-y-8">
               <div className="bg-brand-cream/80 backdrop-blur-[2px] p-12 space-y-6 text-brand-ink">
                 <div>
@@ -572,12 +579,83 @@ export default function App() {
               </div>
             </div>
             
-            <div className="aspect-video w-full grayscale contrast-125 opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-700 bg-brand-ink/5 overflow-hidden backdrop-blur-[2px] border border-brand-ink/10">
-               <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2454.862343213192!2d4.3734000769399895!3d51.998000474681765!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c5b5be13c2b44b%3A0x8ac7c5b1307b2756!2sProfessor%20Schermerhornstraat%204%2C%202628%20PZ%20Delft!5e0!3m2!1sen!2snl!4v1714345000000!5m2!1sen!2snl" 
-                width="100%" height="100%" style={{ border: 0 }} allowFullScreen={true} loading="lazy" referrerPolicy="no-referrer-when-downgrade"
-               />
+            <div className="flex flex-col gap-8">
+              {/* Google Maps iframe */}
+              <div className="flex flex-col gap-3">
+                <span className="text-xs font-bold uppercase tracking-widest text-brand-accent flex items-center gap-2">
+                  <MapPin size={14} /> {lang === 'en' ? 'Google Maps' : 'Google 地圖'}
+                </span>
+                <div className="aspect-video w-full grayscale contrast-125 opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-700 bg-brand-ink/5 overflow-hidden backdrop-blur-[2px] border border-brand-ink/10">
+                   <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2454.862343213192!2d4.3734000769399895!3d51.998000474681765!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c5b5be13c2b44b%3A0x8ac7c5b1307b2756!2sProfessor%20Schermerhornstraat%204%2C%202628%20PZ%20Delft!5e0!3m2!1sen!2snl!4v1714345000000!5m2!1sen!2snl" 
+                    width="100%" height="100%" style={{ border: 0 }} allowFullScreen={true} loading="lazy" referrerPolicy="no-referrer-when-downgrade"
+                   />
+                </div>
+              </div>
+
+              {/* Parking Map */}
+              <div className="flex flex-col gap-3">
+                <span className="text-xs font-bold uppercase tracking-widest text-brand-accent flex items-center gap-2">
+                  <ExternalLink size={14} /> {lang === 'en' ? 'Parking Map' : '停車地圖'}
+                </span>
+                <div className="w-full bg-brand-ink/5 overflow-hidden backdrop-blur-[2px] border border-brand-ink/10 group">
+                  <img 
+                    src={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/carr-park.png`} 
+                    alt="Parking Map" 
+                    className="w-full h-auto object-cover grayscale contrast-125 group-hover:grayscale-0 group-hover:contrast-100 transition-all duration-700 select-none pointer-events-none" 
+                  />
+                </div>
+              </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contact" className="py-32 bg-white/75 md:bg-white/80 backdrop-blur-[2px] relative z-10 -mt-px border-t border-brand-ink/10">
+        <div className="container mx-auto px-6">
+          <SectionHeading zh="聯絡我們" en="Contact Us" number="05" />
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mt-16">
+            <a 
+              href="https://www.instagram.com/dtso_tud/?hl=en" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="group flex flex-col md:flex-row items-center justify-between p-8 md:p-12 border border-brand-ink/10 bg-brand-cream/40 hover:bg-brand-accent/5 hover:border-brand-accent transition-all duration-500 backdrop-blur-[2px] cursor-pointer"
+            >
+              <div className="flex items-center gap-6">
+                <div className="p-5 bg-brand-ink/5 group-hover:bg-brand-accent/10 group-hover:text-brand-accent transition-all duration-500 text-brand-ink flex items-center justify-center">
+                  <Instagram size={40} className="transition-transform duration-500 group-hover:scale-110" />
+                </div>
+                <div>
+                  <h3 className="font-serif text-3xl md:text-4xl font-bold group-hover:text-brand-accent transition-colors">Instagram</h3>
+                  <p className="text-sm font-light opacity-60 mt-1">@dtso_tud</p>
+                </div>
+              </div>
+              <div className="mt-6 md:mt-0">
+                <ChevronRight size={24} className="text-brand-ink/40 group-hover:text-brand-accent transform group-hover:translate-x-2 transition-all duration-300" />
+              </div>
+            </a>
+
+            <a 
+              href="https://www.facebook.com/tudelftdtso" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="group flex flex-col md:flex-row items-center justify-between p-8 md:p-12 border border-brand-ink/10 bg-brand-cream/40 hover:bg-brand-accent/5 hover:border-brand-accent transition-all duration-500 backdrop-blur-[2px] cursor-pointer"
+            >
+              <div className="flex items-center gap-6">
+                <div className="p-5 bg-brand-ink/5 group-hover:bg-brand-accent/10 group-hover:text-brand-accent transition-all duration-500 text-brand-ink flex items-center justify-center">
+                  <Facebook size={40} className="transition-transform duration-500 group-hover:scale-110" />
+                </div>
+                <div>
+                  <h3 className="font-serif text-3xl md:text-4xl font-bold group-hover:text-brand-accent transition-colors">Facebook</h3>
+                  <p className="text-sm font-light opacity-60 mt-1">@tudelftdtso</p>
+                </div>
+              </div>
+              <div className="mt-6 md:mt-0">
+                <ChevronRight size={24} className="text-brand-ink/40 group-hover:text-brand-accent transform group-hover:translate-x-2 transition-all duration-300" />
+              </div>
+            </a>
           </div>
         </div>
       </section>
