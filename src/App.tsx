@@ -703,10 +703,31 @@ export default function App() {
               </div>
               <div className="h-px w-full bg-brand-ink/10" />
               <ul className="list-disc list-inside space-y-3 text-base font-light text-brand-ink/80 leading-relaxed">
-                <li>Mijnbouwstraat</li>
-                <li>Piet Heinstraat</li>
-                <li>Cornelis Trompstraat</li>
-                <li>Michiel de Ruyterweg</li>
+                <li>
+                  <a href="https://maps.app.goo.gl/LqD88XpCfcduzUBr8?g_st=ic" target="_blank" rel="noopener noreferrer" className="hover:text-brand-accent hover:underline underline-offset-4 transition-all duration-300">
+                    Mijnbouwstraat
+                  </a>
+                </li>
+                <li>
+                  <a href="https://maps.app.goo.gl/3BQDJjqD2NhaBg4M6?g_st=ic" target="_blank" rel="noopener noreferrer" className="hover:text-brand-accent hover:underline underline-offset-4 transition-all duration-300">
+                    Piet Heinstraat
+                  </a>
+                </li>
+                <li>
+                  <a href="https://maps.app.goo.gl/fKMKWc5UhaLr3Me89?g_st=ic" target="_blank" rel="noopener noreferrer" className="hover:text-brand-accent hover:underline underline-offset-4 transition-all duration-300">
+                    Cornelis Trompstraat
+                  </a>
+                </li>
+                <li>
+                  <a href="https://maps.app.goo.gl/NVw5RDEHGyqT2NDZ6" target="_blank" rel="noopener noreferrer" className="hover:text-brand-accent hover:underline underline-offset-4 transition-all duration-300">
+                    Michiel de Ruyterweg
+                  </a>
+                </li>
+                <li>
+                  <a href="https://maps.app.goo.gl/DejV2cJr4J6V3Cis7" target="_blank" rel="noopener noreferrer" className="hover:text-brand-accent hover:underline underline-offset-4 transition-all duration-300">
+                    {lang === 'en' ? 'ParkBee Mijnbouwplein (Paid Parking)' : 'ParkBee Mijnbouwplein（附註收費停車場）'}
+                  </a>
+                </li>
               </ul>
             </div>
           </div>
